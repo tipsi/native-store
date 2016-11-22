@@ -1,0 +1,5 @@
+rootProject.name = 'example'
+
+include ':app'
+include ':native-store'
+project(':native-store').projectDir = new File(rootProject.projectDir, '../node_modules/native-store/android')
