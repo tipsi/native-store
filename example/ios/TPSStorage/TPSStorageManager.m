@@ -7,12 +7,10 @@
 //
 
 #import "TPSStorageManager.h"
+#import "TPSStorage.h"
 #import "RCTLog.h"
 
 @implementation TPSStorageManager
-{
-  NSMutableDictionary *storage;
-}
 
 RCT_EXPORT_MODULE();
 
@@ -23,7 +21,7 @@ RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(init:(NSDictionary *)options)
 {
-  storage = [[NSMutableDictionary alloc] initWithDictionary:options];
+
 }
 
 RCT_EXPORT_METHOD(setItem:(NSString *)key
@@ -32,7 +30,7 @@ RCT_EXPORT_METHOD(setItem:(NSString *)key
                  rejecter:(RCTPromiseRejectBlock)reject)
 
 {
-  [storage setValue:value forKey:key];
+  [[TPSStorage sharedInstance] setItem:key value:value];
   
   [self notifyReactNativeAboutChange:key forValue:value];
   
@@ -44,7 +42,7 @@ RCT_EXPORT_METHOD(getItem:(NSString *)key
                  rejecter:(RCTPromiseRejectBlock)reject)
 
 {
-  NSString *value = [storage valueForKey:key];
+  NSString *value = [[TPSStorage sharedInstance] getItem:key];
 
   resolve(value);
 }
@@ -54,7 +52,7 @@ RCT_EXPORT_METHOD(removeItem:(NSString *)key
                     rejecter:(RCTPromiseRejectBlock)reject)
 
 {
-  [storage removeObjectForKey:key];
+  [[TPSStorage sharedInstance] removeItem:key];
   
   [self notifyReactNativeAboutChange:key forValue:nil];
   
@@ -65,6 +63,5 @@ RCT_EXPORT_METHOD(removeItem:(NSString *)key
 {
   [self sendEventWithName:@"storage:change" body:@{ @"key": key, @"value": value }];
 }
-
 
 @end

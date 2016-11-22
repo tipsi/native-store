@@ -32,6 +32,7 @@ export default class example extends Component {
 
   handleChangeTextInState = (text) => {
     this.setState({ result: text })
+    console.log(text)
   }
 
   handleChangeTextInStorage = (text) => {
