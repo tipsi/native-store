@@ -11,13 +11,19 @@ import Storage from './src/Storage'
 export default class example extends Component {
 
   state = {
-    result: '',
+    fromJS: '',
+    fromNative: '',
   }
 
   componentDidMount() {
     this.listener = Storage.subscribe(
-      'input',
-      this.handleChangeTextInState
+      'from_native',
+      this.updateValueFromNative
+    )
+
+    this.listener = Storage.subscribe(
+      'from_js',
+      this.updateValueInput
     )
 
     // await Storage.setItem('test', 'some string')
@@ -29,23 +35,35 @@ export default class example extends Component {
     this.listener.remove()
   }
 
-  handleChangeTextInState = (text) => {
-    this.setState({ result: text })
-    console.log(text)
+  updateValueFromNative = (value) => {
+    this.setState({ fromNative: value })
+  }
+
+  updateValueInput = (value) => {
+    this.setState({ fromJS: value })
   }
 
   handleChangeTextInStorage = (text) => {
-    Storage.setItem('input', text)
+    Storage.setItem('from_js', text)
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Storage Example
         </Text>
-        <Text style={styles.welcome}>
-          Result: {this.state.result}
+        <Text style={styles.label}>
+          Value from native:
+        </Text>
+        <Text style={styles.value}>
+          {this.state.fromNative}
+        </Text>
+        <Text style={styles.label}>
+          Input result:
+        </Text>
+        <Text style={styles.value}>
+          {this.state.fromJS}
         </Text>
         <View style={styles.inputContainer}>
           <TextInput
@@ -54,7 +72,7 @@ export default class example extends Component {
           />
         </View>
         <Text style={styles.instructions}>
-          To get started, edit index.ios.js
+          subscribe (js) -> set value (js) -> print result (js)
         </Text>
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}
@@ -76,6 +94,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
+  },
+  label: {
+    textAlign: 'center',
+    color: '#333333',
+    margin: 5,
+  },
+  value: {
+    fontSize: 15,
+    textAlign: 'center',
+    margin: 5,
   },
   instructions: {
     textAlign: 'center',
