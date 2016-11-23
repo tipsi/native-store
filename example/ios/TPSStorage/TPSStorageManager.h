@@ -13,6 +13,4 @@
 
 @interface TPSStorageManager : RCTEventEmitter <RCTBridgeModule>
 
-
-
 @end

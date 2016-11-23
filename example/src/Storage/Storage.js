@@ -9,10 +9,6 @@ if (__DEV__) {
 }
 
 class Storage {
-  constructor() {
-    TPSStorageManager.init({})
-  }
-
   setItem = (key, value) => (
     TPSStorageManager.setItem(key, value)
   )

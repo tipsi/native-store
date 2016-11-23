@@ -12,7 +12,6 @@ export default class example extends Component {
 
   state = {
     result: '',
-    input: '',
   }
 
   componentDidMount() {
@@ -37,7 +36,6 @@ export default class example extends Component {
 
   handleChangeTextInStorage = (text) => {
     Storage.setItem('input', text)
-    this.setState({ input: text })
   }
 
   render() {
@@ -52,7 +50,6 @@ export default class example extends Component {
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            value={this.state.input}
             onChangeText={this.handleChangeTextInStorage}
           />
         </View>

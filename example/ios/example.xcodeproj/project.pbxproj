@@ -22,6 +22,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		3A0BB87F1DE5EB72000BCFF9 /* EventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0BB87E1DE5EB72000BCFF9 /* EventEmitter.m */; };
 		3AA8F5781DE4A73F003E8416 /* TPSStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA8F5771DE4A73F003E8416 /* TPSStorageManager.m */; };
 		3ADB8F001DE4EAF500AEDC5F /* TPSStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB8EFF1DE4EAF500AEDC5F /* TPSStorage.m */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
@@ -176,6 +177,8 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = example/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = example/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		3A0BB87D1DE5EB72000BCFF9 /* EventEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventEmitter.h; path = TPSStorage/EventEmitter.h; sourceTree = "<group>"; };
+		3A0BB87E1DE5EB72000BCFF9 /* EventEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventEmitter.m; path = TPSStorage/EventEmitter.m; sourceTree = "<group>"; };
 		3AA8F5761DE4A73F003E8416 /* TPSStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPSStorageManager.h; path = TPSStorage/TPSStorageManager.h; sourceTree = "<group>"; };
 		3AA8F5771DE4A73F003E8416 /* TPSStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPSStorageManager.m; path = TPSStorage/TPSStorageManager.m; sourceTree = "<group>"; };
 		3ADB8EFE1DE4EAF500AEDC5F /* TPSStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPSStorage.h; path = TPSStorage/TPSStorage.h; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 				3AA8F5771DE4A73F003E8416 /* TPSStorageManager.m */,
 				3ADB8EFE1DE4EAF500AEDC5F /* TPSStorage.h */,
 				3ADB8EFF1DE4EAF500AEDC5F /* TPSStorage.m */,
+				3A0BB87D1DE5EB72000BCFF9 /* EventEmitter.h */,
+				3A0BB87E1DE5EB72000BCFF9 /* EventEmitter.m */,
 			);
 			name = TPSStorage;
 			sourceTree = "<group>";
@@ -671,6 +676,7 @@
 				3AA8F5781DE4A73F003E8416 /* TPSStorageManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				3ADB8F001DE4EAF500AEDC5F /* TPSStorage.m in Sources */,
+				3A0BB87F1DE5EB72000BCFF9 /* EventEmitter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
