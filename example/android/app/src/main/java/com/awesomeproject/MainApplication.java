@@ -8,28 +8,30 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.gettipsi.nativestore.react.NativeStoreReactPackage;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
-  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
-    @Override
-    protected boolean getUseDeveloperSupport() {
-      return BuildConfig.DEBUG;
-    }
+    private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+        @Override
+        protected boolean getUseDeveloperSupport() {
+            return BuildConfig.DEBUG;
+        }
+
+        @Override
+        protected List<ReactPackage> getPackages() {
+            return Arrays.<ReactPackage>asList(
+                    new MainReactPackage(),
+                    new NativeStoreReactPackage()
+            );
+        }
+    };
 
     @Override
-    protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
-          new MainReactPackage()
-      );
+    public ReactNativeHost getReactNativeHost() {
+        return mReactNativeHost;
     }
-  };
-
-  @Override
-  public ReactNativeHost getReactNativeHost() {
-      return mReactNativeHost;
-  }
 }

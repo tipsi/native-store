@@ -1,5 +1,7 @@
 package com.gettipsi.nativestore.react;
 
+import android.util.Log;
+
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -35,14 +37,15 @@ public class NativeStoreModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void init(ReadableMap options) {
+        Log.d(TAG, "init: INIT");
         nativeStoreInstance = NativeStore.getInstance();
     }
 
     @ReactMethod
-    public void subscribe(ReadableMap data, final Promise promise) {
+    public void subscribe(String functionName, final Promise promise) {
         final ReactObserver observer = new ReactObserver("name");
         observerMap.put("name", observer);
-        nativeStoreInstance.registerObserver(observer);
+        NativeStore.getInstance().registerObserver(observer);
     }
 
     @ReactMethod
@@ -50,12 +53,12 @@ public class NativeStoreModule extends ReactContextBaseJavaModule {
         final ReactObserver observer = (ReactObserver) observerMap.get("name");
         if(observer != null) {
             observerMap.remove("name");
-            nativeStoreInstance.removeObserver(observer);
+            NativeStore.getInstance().removeObserver(observer);
         }
     }
 
     @ReactMethod
     public void setValue(ReadableMap data) {
-        nativeStoreInstance.changeData((float) data.getDouble("temperature"), 0, 0);
+        NativeStore.getInstance().changeData((float) data.getDouble("temperature"), 0, 0);
     }
 }

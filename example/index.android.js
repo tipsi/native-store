@@ -4,7 +4,9 @@
  * @flow
  */
 
+
 import React, { Component } from 'react';
+import NativeStore from 'native-store';
 import {
   AppRegistry,
   StyleSheet,
@@ -12,14 +14,11 @@ import {
   View
 } from 'react-native';
 
-export default class AwesomeProject extends Component {
+NativeStore.init(
+       {price: '100.00',
+        currency: 'USD',})
 
-//  state = {
-//    js_js: 'Text for JS - JS',
-//    js_native: 'Text for JS - Native',
-//    native_js: 'Text for Native - JS',
-//    native_native: 'Text for Native - Native',
-//  }
+export default class AwesomeProject extends Component {
 
     state = {
       js_js: 'None',
@@ -35,7 +34,7 @@ export default class AwesomeProject extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Data from Android Native Store
+          Data from Android Native Store 3
         </Text>
         <Text style={styles.dataFile}>
           JS - JS : {state.js_js}
