@@ -4,7 +4,7 @@ import {
   StyleSheet,
   TextInput,
   Text,
-  View
+  View,
 } from 'react-native'
 import Storage from 'native-store'
 
@@ -16,15 +16,20 @@ export default class example extends Component {
   }
 
   async componentDidMount() {
-    this.listener = Storage.subscribe(this.handleStateChange)
+    this.unsubscribe = Storage.subscribe(this.handleStateChange)
 
-    // await Storage.setState({ test: 123, some: { nested: { value: 'here' } } })
-    // const state = await Storage.getState()
-    // console.log('RESULT:', state)
+    await Storage.setState({
+      test: 1,
+      some: { nested: { value: 'here' } },
+      array: [10, 11, { key: true }],
+      go: false,
+    })
+    const state = await Storage.getState()
+    console.log('RESULT:', state)
   }
 
   componentWillUnmount() {
-    this.listener.remove()
+    this.unsubscribe()
   }
 
   handleStateChange = (state) => {

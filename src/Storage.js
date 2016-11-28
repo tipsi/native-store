@@ -2,10 +2,14 @@ import { NativeModules } from 'react-native'
 import NativeEventEmitter from 'react-native/Libraries/EventEmitter/NativeEventEmitter'
 
 const { TPSStorageManager } = NativeModules
-const TPSStorageEventEmitter = new NativeEventEmitter(TPSStorageManager)
+const TPSStorageEmitter = new NativeEventEmitter(TPSStorageManager)
 
 if (__DEV__) {
-  TPSStorageEventEmitter.addListener('storage:change', () => {})
+  // Fix warning about empty listeners in DEV
+  TPSStorageEmitter.addListener(
+    'storage:change',
+    () => {}
+  )
 }
 
 class Storage {
@@ -17,9 +21,13 @@ class Storage {
     TPSStorageManager.getState()
   )
 
-  subscribe = listener => (
-    TPSStorageEventEmitter.addListener('storage:change', listener)
-  )
+  subscribe = (listener) => {
+    const result = TPSStorageEmitter.addListener(
+      'storage:change',
+      listener
+    )
+    return () => result.remove()
+  }
 }
 
 export default new Storage()
