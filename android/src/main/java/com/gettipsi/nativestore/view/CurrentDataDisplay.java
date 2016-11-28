@@ -3,6 +3,7 @@ package com.gettipsi.nativestore.view;
 
 import android.util.Log;
 
+import com.facebook.react.bridge.WritableMap;
 import com.gettipsi.nativestore.store.NativeStore;
 import com.gettipsi.nativestore.store.Observer;
 
@@ -21,7 +22,7 @@ public class CurrentDataDisplay implements Observer {
     }
 
     @Override
-    public void update(float temperature, float humidity, int pressure) {
-        Log.d(TAG, "update: NEW VALUE == "+temperature);
+    public void update(WritableMap soreState) {
+        Log.d(TAG, "update: NEW VALUE == "+soreState);
     }
 }

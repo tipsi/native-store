@@ -1,6 +1,7 @@
 package com.gettipsi.nativestore.store;
 
 import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 
 import java.util.ArrayList;
@@ -13,9 +14,8 @@ public class NativeStore implements Observable {
     private static NativeStore ourInstance = new NativeStore();
     private static WritableMap storeMap;
     private List<Observer> observers;
-    private float temperature;
-    private float humidity;
-    private int pressure;
+    private boolean item;
+
 
     public static NativeStore getInstance() {
         if (ourInstance == null)
@@ -46,15 +46,27 @@ public class NativeStore implements Observable {
     @Override
     public void notifyObservers() {
         for (Observer observer : observers)
-        // TODO: Stub
-            observer.update(temperature, humidity, pressure);
+            observer.update(storeMap);
     }
 
-    public void changeData(final String key, final Object value) {
-//        storeMap.putNull();
-//        this.temperature = temperature;
-//        this.humidity = humidity;
-//        this.pressure = pressure;
+    public void changeData(final String key, final ReadableMap value) {
+        WritableMap sourceMap = Arguments.createMap();
+        sourceMap.merge(value);
+        storeMap.putMap(key, sourceMap);
         notifyObservers();
+    }
+
+    public void removeData(final String key) {
+        storeMap.putNull(key);
+    }
+
+    public WritableMap getItem(final String key) {
+        if(storeMap.isNull(key))
+            return null;
+        else {
+            final WritableMap item = Arguments.createMap();
+            item.merge(storeMap.getMap(key));
+            return item;
+        }
     }
 }
