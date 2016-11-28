@@ -1,6 +1,6 @@
 //
-//  TPSStorage.h
-//  example
+//  TPSStorageManager.h
+//  TPSStorage
 //
 //  Created by Anton Petrov on 22.11.16.
 //  Copyright © 2016 Facebook. All rights reserved.

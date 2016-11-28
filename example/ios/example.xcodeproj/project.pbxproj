@@ -22,11 +22,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
-		3A0BB87F1DE5EB72000BCFF9 /* EventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0BB87E1DE5EB72000BCFF9 /* EventEmitter.m */; };
-		3A0BB8941DE60165000BCFF9 /* Dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0BB8931DE60165000BCFF9 /* Dummy.m */; };
-		3AA8F5781DE4A73F003E8416 /* TPSStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA8F5771DE4A73F003E8416 /* TPSStorageManager.m */; };
-		3ADB8F001DE4EAF500AEDC5F /* TPSStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADB8EFF1DE4EAF500AEDC5F /* TPSStorage.m */; };
+		3A70DD851DEC8A5E003C6566 /* Dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A70DD831DEC8A5E003C6566 /* Dummy.m */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		EA2EA88FF9BD46E287D9E7F8 /* libTPSStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5CAF37059B4B4C8265B2EF /* libTPSStorage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,54 +91,61 @@
 			remoteGlobalIDString = 83CBBA2E1A601D0E00E9B192;
 			remoteInfo = React;
 		};
-		3AA8F55B1DE4A6ED003E8416 /* PBXContainerItemProxy */ = {
+		3A70DD681DEC8A38003C6566 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2D2A283A1D9B042B00D4039D;
 			remoteInfo = "RCTImage-tvOS";
 		};
-		3AA8F55F1DE4A6ED003E8416 /* PBXContainerItemProxy */ = {
+		3A70DD6C1DEC8A38003C6566 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2D2A28471D9B043800D4039D;
 			remoteInfo = "RCTLinking-tvOS";
 		};
-		3AA8F5631DE4A6ED003E8416 /* PBXContainerItemProxy */ = {
+		3A70DD701DEC8A38003C6566 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2D2A28541D9B044C00D4039D;
 			remoteInfo = "RCTNetwork-tvOS";
 		};
-		3AA8F5671DE4A6ED003E8416 /* PBXContainerItemProxy */ = {
+		3A70DD741DEC8A38003C6566 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2D2A28611D9B046600D4039D;
 			remoteInfo = "RCTSettings-tvOS";
 		};
-		3AA8F56B1DE4A6ED003E8416 /* PBXContainerItemProxy */ = {
+		3A70DD781DEC8A38003C6566 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2D2A287B1D9B048500D4039D;
 			remoteInfo = "RCTText-tvOS";
 		};
-		3AA8F5701DE4A6ED003E8416 /* PBXContainerItemProxy */ = {
+		3A70DD7D1DEC8A38003C6566 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2D2A28881D9B049200D4039D;
 			remoteInfo = "RCTWebSocket-tvOS";
 		};
-		3AA8F5741DE4A6ED003E8416 /* PBXContainerItemProxy */ = {
+		3A70DD811DEC8A38003C6566 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2D2A28131D9B038B00D4039D;
 			remoteInfo = "React-tvOS";
+		};
+		3A70DDA41DEC8B3B003C6566 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D295198B29314C6AA986624E /* TPSStorage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3A70DCDA1DEC7FCA003C6566;
+			remoteInfo = TPSStorage;
 		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -178,16 +183,12 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = example/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = example/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		3A0BB87D1DE5EB72000BCFF9 /* EventEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventEmitter.h; path = TPSStorage/EventEmitter.h; sourceTree = "<group>"; };
-		3A0BB87E1DE5EB72000BCFF9 /* EventEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventEmitter.m; path = TPSStorage/EventEmitter.m; sourceTree = "<group>"; };
-		3A0BB8921DE60165000BCFF9 /* Dummy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dummy.h; path = Dummy/Dummy.h; sourceTree = "<group>"; };
-		3A0BB8931DE60165000BCFF9 /* Dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dummy.m; path = Dummy/Dummy.m; sourceTree = "<group>"; };
-		3AA8F5761DE4A73F003E8416 /* TPSStorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPSStorageManager.h; path = TPSStorage/TPSStorageManager.h; sourceTree = "<group>"; };
-		3AA8F5771DE4A73F003E8416 /* TPSStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPSStorageManager.m; path = TPSStorage/TPSStorageManager.m; sourceTree = "<group>"; };
-		3ADB8EFE1DE4EAF500AEDC5F /* TPSStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPSStorage.h; path = TPSStorage/TPSStorage.h; sourceTree = "<group>"; };
-		3ADB8EFF1DE4EAF500AEDC5F /* TPSStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPSStorage.m; path = TPSStorage/TPSStorage.m; sourceTree = "<group>"; };
+		3A70DD831DEC8A5E003C6566 /* Dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dummy.m; path = Dummy/Dummy.m; sourceTree = "<group>"; };
+		3A70DD841DEC8A5E003C6566 /* Dummy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dummy.h; path = Dummy/Dummy.h; sourceTree = "<group>"; };
+		5C5CAF37059B4B4C8265B2EF /* libTPSStorage.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libTPSStorage.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		D295198B29314C6AA986624E /* TPSStorage.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = TPSStorage.xcodeproj; path = "../node_modules/native-store/ios/TPSStorage.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -213,6 +214,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
+				EA2EA88FF9BD46E287D9E7F8 /* libTPSStorage.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				00C302C01ABCB91800DB3ED1 /* libRCTImage.a */,
-				3AA8F55C1DE4A6ED003E8416 /* libRCTImage-tvOS.a */,
+				3A70DD691DEC8A38003C6566 /* libRCTImage-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,7 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */,
-				3AA8F5641DE4A6ED003E8416 /* libRCTNetwork-tvOS.a */,
+				3A70DD711DEC8A38003C6566 /* libRCTNetwork-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -282,7 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				139105C11AF99BAD00B5F7CC /* libRCTSettings.a */,
-				3AA8F5681DE4A6ED003E8416 /* libRCTSettings-tvOS.a */,
+				3A70DD751DEC8A38003C6566 /* libRCTSettings-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -291,7 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				139FDEF41B06529B00C62182 /* libRCTWebSocket.a */,
-				3AA8F5711DE4A6ED003E8416 /* libRCTWebSocket-tvOS.a */,
+				3A70DD7E1DEC8A38003C6566 /* libRCTWebSocket-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -314,38 +316,33 @@
 			isa = PBXGroup;
 			children = (
 				146834041AC3E56700842450 /* libReact.a */,
-				3AA8F5751DE4A6ED003E8416 /* libReact-tvOS.a */,
+				3A70DD821DEC8A38003C6566 /* libReact-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3A0BB8911DE60130000BCFF9 /* Dummy */ = {
+		3A70DD631DEC8A38003C6566 /* Dummy */ = {
 			isa = PBXGroup;
 			children = (
-				3A0BB8921DE60165000BCFF9 /* Dummy.h */,
-				3A0BB8931DE60165000BCFF9 /* Dummy.m */,
+				3A70DD831DEC8A5E003C6566 /* Dummy.m */,
+				3A70DD841DEC8A5E003C6566 /* Dummy.h */,
 			);
 			name = Dummy;
 			sourceTree = "<group>";
 		};
-		3AA8F5561DE4A6EC003E8416 /* TPSStorage */ = {
+		3A70DD901DEC8B3B003C6566 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3AA8F5761DE4A73F003E8416 /* TPSStorageManager.h */,
-				3AA8F5771DE4A73F003E8416 /* TPSStorageManager.m */,
-				3ADB8EFE1DE4EAF500AEDC5F /* TPSStorage.h */,
-				3ADB8EFF1DE4EAF500AEDC5F /* TPSStorage.m */,
-				3A0BB87D1DE5EB72000BCFF9 /* EventEmitter.h */,
-				3A0BB87E1DE5EB72000BCFF9 /* EventEmitter.m */,
+				3A70DDA51DEC8B3B003C6566 /* libTPSStorage.a */,
 			);
-			name = TPSStorage;
+			name = Products;
 			sourceTree = "<group>";
 		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				78C398B91ACF4ADC00677621 /* libRCTLinking.a */,
-				3AA8F5601DE4A6ED003E8416 /* libRCTLinking-tvOS.a */,
+				3A70DD6D1DEC8A38003C6566 /* libRCTLinking-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -363,6 +360,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
+				D295198B29314C6AA986624E /* TPSStorage.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -371,7 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				832341B51AAA6A8300B99B32 /* libRCTText.a */,
-				3AA8F56C1DE4A6ED003E8416 /* libRCTText-tvOS.a */,
+				3A70DD791DEC8A38003C6566 /* libRCTText-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -379,8 +377,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				3A0BB8911DE60130000BCFF9 /* Dummy */,
-				3AA8F5561DE4A6EC003E8416 /* TPSStorage */,
+				3A70DD631DEC8A38003C6566 /* Dummy */,
 				13B07FAE1A68108700A75B9A /* example */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* exampleTests */,
@@ -444,7 +441,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 610;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -504,6 +501,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 3A70DD901DEC8B3B003C6566 /* Products */;
+					ProjectRef = D295198B29314C6AA986624E /* TPSStorage.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -571,53 +572,60 @@
 			remoteRef = 146834031AC3E56700842450 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3AA8F55C1DE4A6ED003E8416 /* libRCTImage-tvOS.a */ = {
+		3A70DD691DEC8A38003C6566 /* libRCTImage-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libRCTImage-tvOS.a";
-			remoteRef = 3AA8F55B1DE4A6ED003E8416 /* PBXContainerItemProxy */;
+			remoteRef = 3A70DD681DEC8A38003C6566 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3AA8F5601DE4A6ED003E8416 /* libRCTLinking-tvOS.a */ = {
+		3A70DD6D1DEC8A38003C6566 /* libRCTLinking-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libRCTLinking-tvOS.a";
-			remoteRef = 3AA8F55F1DE4A6ED003E8416 /* PBXContainerItemProxy */;
+			remoteRef = 3A70DD6C1DEC8A38003C6566 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3AA8F5641DE4A6ED003E8416 /* libRCTNetwork-tvOS.a */ = {
+		3A70DD711DEC8A38003C6566 /* libRCTNetwork-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libRCTNetwork-tvOS.a";
-			remoteRef = 3AA8F5631DE4A6ED003E8416 /* PBXContainerItemProxy */;
+			remoteRef = 3A70DD701DEC8A38003C6566 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3AA8F5681DE4A6ED003E8416 /* libRCTSettings-tvOS.a */ = {
+		3A70DD751DEC8A38003C6566 /* libRCTSettings-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libRCTSettings-tvOS.a";
-			remoteRef = 3AA8F5671DE4A6ED003E8416 /* PBXContainerItemProxy */;
+			remoteRef = 3A70DD741DEC8A38003C6566 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3AA8F56C1DE4A6ED003E8416 /* libRCTText-tvOS.a */ = {
+		3A70DD791DEC8A38003C6566 /* libRCTText-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libRCTText-tvOS.a";
-			remoteRef = 3AA8F56B1DE4A6ED003E8416 /* PBXContainerItemProxy */;
+			remoteRef = 3A70DD781DEC8A38003C6566 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3AA8F5711DE4A6ED003E8416 /* libRCTWebSocket-tvOS.a */ = {
+		3A70DD7E1DEC8A38003C6566 /* libRCTWebSocket-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libRCTWebSocket-tvOS.a";
-			remoteRef = 3AA8F5701DE4A6ED003E8416 /* PBXContainerItemProxy */;
+			remoteRef = 3A70DD7D1DEC8A38003C6566 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3AA8F5751DE4A6ED003E8416 /* libReact-tvOS.a */ = {
+		3A70DD821DEC8A38003C6566 /* libReact-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = "libReact-tvOS.a";
-			remoteRef = 3AA8F5741DE4A6ED003E8416 /* PBXContainerItemProxy */;
+			remoteRef = 3A70DD811DEC8A38003C6566 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3A70DDA51DEC8B3B003C6566 /* libTPSStorage.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTPSStorage.a;
+			remoteRef = 3A70DDA41DEC8B3B003C6566 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
@@ -685,12 +693,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A0BB8941DE60165000BCFF9 /* Dummy.m in Sources */,
+				3A70DD851DEC8A5E003C6566 /* Dummy.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				3AA8F5781DE4A73F003E8416 /* TPSStorageManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
-				3ADB8F001DE4EAF500AEDC5F /* TPSStorage.m in Sources */,
-				3A0BB87F1DE5EB72000BCFF9 /* EventEmitter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,6 +733,10 @@
 				INFOPLIST_FILE = exampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/example.app/example";
 			};
@@ -741,6 +750,10 @@
 				INFOPLIST_FILE = exampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/example.app/example";
 			};
@@ -756,6 +769,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/native-store/ios/TPSStorage",
 				);
 				INFOPLIST_FILE = example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -778,6 +792,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/native-store/ios/TPSStorage",
 				);
 				INFOPLIST_FILE = example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -829,6 +844,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/native-store/ios/TPSStorage",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -869,6 +885,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
+					"$(SRCROOT)/../node_modules/native-store/ios/TPSStorage",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;

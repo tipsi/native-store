@@ -6,7 +6,7 @@ import {
   Text,
   View
 } from 'react-native'
-import Storage from './src/Storage'
+import Storage from 'native-store'
 
 export default class example extends Component {
 
