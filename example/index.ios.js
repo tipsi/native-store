@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   AppRegistry,
   StyleSheet,
@@ -11,40 +11,40 @@ import Storage from 'native-store'
 export default class example extends Component {
 
   state = {
-    fromJS: '',
-    fromNative: '',
+    input: '',
+    uuid: '',
   }
 
-  componentDidMount() {
-    this.listener = Storage.subscribe(
-      'from_native',
-      this.updateValueFromNative
-    )
+  async componentDidMount() {
+    this.listener = Storage.subscribe(this.handleStateChange)
 
-    this.listener = Storage.subscribe(
-      'from_js',
-      this.updateValueInput
-    )
-
-    // await Storage.setItem('test', 'some string')
-    // const value = await Storage.getItem('test')
-    // console.log('RESULT:', value)
+    // await Storage.setState({ test: 123, some: { nested: { value: 'here' } } })
+    // const state = await Storage.getState()
+    // console.log('RESULT:', state)
   }
 
   componentWillUnmount() {
     this.listener.remove()
   }
 
-  updateValueFromNative = (value) => {
-    this.setState({ fromNative: value })
+  handleStateChange = (state) => {
+    console.log('STATE FROM JS:', state)
+    this.setState({
+      input: state.input,
+      uuid: state.uuid,
+    })
   }
 
-  updateValueInput = (value) => {
-    this.setState({ fromJS: value })
-  }
-
-  handleChangeTextInStorage = (text) => {
-    Storage.setItem('from_js', text)
+  // updateValueFromNative = (value) => {
+  //   this.setState({ fromNative: value })
+  // }
+  //
+  // updateValueInput = (value) => {
+  //   this.setState({ fromJS: value })
+  // }
+  //
+  handleChangeTextInState = (text) => {
+    Storage.setState({ input: text })
   }
 
   render() {
@@ -57,22 +57,22 @@ export default class example extends Component {
           Value from native:
         </Text>
         <Text style={styles.value}>
-          {this.state.fromNative}
+          {this.state.uuid}
         </Text>
         <Text style={styles.label}>
           Input result:
         </Text>
         <Text style={styles.value}>
-          {this.state.fromJS}
+          {this.state.input}
         </Text>
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            onChangeText={this.handleChangeTextInStorage}
+            onChangeText={this.handleChangeTextInState}
           />
         </View>
         <Text style={styles.instructions}>
-          subscribe (js) -> set value (js) -> print result (js)
+          subscribe (js) -> set state (js) -> print result (js)
         </Text>
         <Text style={styles.instructions}>
           Press Cmd+R to reload,{'\n'}
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 13,
     padding: 5,
-    margin: 5
+    margin: 5,
   },
 })
 

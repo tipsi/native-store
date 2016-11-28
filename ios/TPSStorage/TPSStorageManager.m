@@ -22,9 +22,9 @@ RCT_EXPORT_MODULE();
     self = [super init];
     if (self != nil) {
         storage = [TPSStorage sharedInstance];
-        // Subscribe on global updates
-        [storage subscribe:^(NSDictionary* data) {
-            [self sendEventWithName:@"storage:change" body:data];
+        // Subscribe on store updates
+        [storage subscribe:^(NSDictionary* state) {
+            [self sendEventWithName:@"storage:change" body:state];
         }];
     }
     return self;
@@ -35,35 +35,23 @@ RCT_EXPORT_MODULE();
     return @[@"storage:change"];
 }
 
-RCT_EXPORT_METHOD(setItem:(NSString *)key
-                  value:(NSString *)value
+RCT_EXPORT_METHOD(setState:(NSDictionary *)state
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 
 {
-    [storage setItem:value forKey:key];
+    [storage setState:state];
     
     resolve(nil);
 }
 
-RCT_EXPORT_METHOD(getItem:(NSString *)key
-                  resolver:(RCTPromiseResolveBlock)resolve
+RCT_EXPORT_METHOD(getState:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 
 {
-    NSString *value = [storage getItemForKey:key];
+    NSDictionary *state = [storage getState];
     
-    resolve(value);
-}
-
-RCT_EXPORT_METHOD(removeItem:(NSString *)key
-                  resolver:(RCTPromiseResolveBlock)resolve
-                  rejecter:(RCTPromiseRejectBlock)reject)
-
-{
-    [storage removeItemForKey:key];
-    
-    resolve(nil);
+    resolve(state);
 }
 
 @end

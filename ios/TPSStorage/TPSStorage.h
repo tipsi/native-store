@@ -11,13 +11,10 @@
 
 @interface TPSStorage : NSObject
 
-- (void)setItem:(NSString *)value forKey:(NSString *)key;
-- (NSString *)getItemForKey:(NSString *)key;
-- (void)removeItemForKey:(NSString *)key;
+- (void)setState:(NSDictionary *)state;
+- (NSDictionary *)getState;
 - (void)subscribe:(EventEmitterDefaultCallback) callback;
-- (void)subscribe:(NSString*)key callback:(EventEmitterDefaultCallback)callback;
 - (void)unsubscribe:(EventEmitterDefaultCallback) callback;
-- (void)unsubscribe:(NSString*)key callback:(EventEmitterDefaultCallback)callback;
 
 + (id)sharedInstance;
 

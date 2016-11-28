@@ -22,15 +22,19 @@
 
 - (void)startTest
 {
-  [[TPSStorage sharedInstance] subscribe:@"from_js" callback:^(NSDictionary* data) {
-    NSLog(@"VALUE FROM JS:%@", [data valueForKey:@"value"]);
+  [[TPSStorage sharedInstance] subscribe:^(NSDictionary* state) {
+    NSLog(@"STATE FROM NATIVE:%@", state);
   }];
   
   [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(onTick:) userInfo:nil repeats:YES];
 }
 
 -(void)onTick:(NSTimer *)timer {
-  [[TPSStorage sharedInstance] setItem:[[NSUUID UUID] UUIDString] forKey:@"from_native"];
+  NSDictionary *state = [[TPSStorage sharedInstance] getState];
+
+  [state setValue:[[NSUUID UUID] UUIDString] forKey:@"uuid"];
+
+  [[TPSStorage sharedInstance] setState:state];
 }
 
 @end

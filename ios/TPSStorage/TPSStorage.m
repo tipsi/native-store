@@ -36,33 +36,21 @@
     return self;
 }
 
-- (void)setItem:(NSString *)value forKey:(NSString *)key
+- (void)setState:(NSDictionary *)state
 {
-    [storage setValue:value forKey:key];
+    [storage setDictionary:state];
     
-    [self notify:key value:value];
+    [self notify];
 }
 
-- (NSString *)getItemForKey:(NSString *)key
+- (NSDictionary *)getState
 {
-    return [storage valueForKey:key];
-}
-
-- (void)removeItemForKey:(NSString *)key
-{
-    [storage removeObjectForKey:key];
-    
-    [self notify:key value:nil];
+    return storage;
 }
 
 - (void)subscribe:(EventEmitterDefaultCallback)callback
 {
-    [emitter on:@"storage:all" callback:callback];
-}
-
-- (void)subscribe:(NSString *)key callback:(EventEmitterDefaultCallback)callback
-{
-    [emitter on:[NSString stringWithFormat:@"storage:key:%@", key] callback:callback];
+    [emitter on:@"storage:change" callback:callback];
 }
 
 - (void)unsubscribe:(EventEmitterDefaultCallback) callback
@@ -70,17 +58,9 @@
     [emitter removeCallback:callback];
 }
 
-- (void)unsubscribe:(NSString*)key callback:(EventEmitterDefaultCallback)callback
+- (void)notify
 {
-    [emitter removeListener:key callback:callback];
-}
-
-- (void)notify:(NSString *)key value:(NSString *)value
-{
-    NSDictionary *data = @{ @"key": key, @"value": value };
-    
-    [emitter emit:@"storage:all" data:data];
-    [emitter emit:[NSString stringWithFormat:@"storage:key:%@", key] data:data];
+    [emitter emit:@"storage:change" data:storage];
 }
 
 @end

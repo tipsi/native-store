@@ -9,34 +9,17 @@ if (__DEV__) {
 }
 
 class Storage {
-  setItem = (key, value) => (
-    TPSStorageManager.setItem(key, value)
+  setState = state => (
+    TPSStorageManager.setState(state)
   )
 
-  getItem = (key) => (
-    TPSStorageManager.getItem(key)
+  getState = () => (
+    TPSStorageManager.getState()
   )
 
-  removeItem = (key) => (
-    TPSStorageManager.removeItem(key)
+  subscribe = listener => (
+    TPSStorageEventEmitter.addListener('storage:change', listener)
   )
-
-  subscribe = (...args) => {
-    let listener
-
-    if (args.length > 1) {
-      listener = (data) => (
-        data.key === args[0] && args[1](data.value)
-      )
-    } else {
-      listener = args[0]
-    }
-
-    return TPSStorageEventEmitter.addListener(
-      'storage:change',
-      listener
-    )
-  }
 }
 
 export default new Storage()
