@@ -32,6 +32,9 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Gen
         this.reactContext = reactContext;
         observerMap = new HashMap<>();
         reactContext.addLifecycleEventListener(this);
+
+        generatorRandomeString = new GeneratorRandomeString(this);
+        generatorRandomeString.execute();
     }
 
     @Override
@@ -39,15 +42,9 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Gen
         return MODULE_NAME;
     }
 
-    @ReactMethod
-    public void init(ReadableMap options) {
-        Log.d(TAG, "init: INIT");
-        generatorRandomeString = new GeneratorRandomeString(this);
-        generatorRandomeString.execute();
-    }
 
     @ReactMethod
-    public void subscribe(final String reactObserverName, final Promise promise) {
+    public void subscribe(final String reactObserverName) {
         Log.d(TAG, "subscribe: ");
         final ReactObserver observer = new ReactObserver(reactObserverName, reactContext);
         observerMap.put(reactObserverName, observer);
@@ -55,7 +52,7 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Gen
     }
 
     @ReactMethod
-    public void unsubscribe(final String reactObserverName, final Promise promise) {
+    public void unsubscribe(final String reactObserverName) {
         Log.d(TAG, "unsubscribe: ");
         final ReactObserver observer = (ReactObserver) observerMap.get(reactObserverName);
         if (observer != null) {
@@ -98,18 +95,16 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Gen
 
     @Override
     public void onHostResume() {
-        Log.d(TAG, "onHostResume: INIT");
-        generatorRandomeString = new GeneratorRandomeString(this);
-        generatorRandomeString.execute();
+        Log.d(TAG, "onHostResume: ");
     }
 
     @Override
     public void onHostPause() {
-        generatorRandomeString.close();
+
     }
 
     @Override
     public void onHostDestroy() {
-
+        generatorRandomeString.close();
     }
 }

@@ -20,12 +20,12 @@ class Storage {
     NativeStoreModule.getValue('main_state')
   )
 
-
   subscribe = listener => {
-//    TPSStorageEventEmitter.subscribe('storage:change', listener)
     NativeStoreModule.subscribe('storage:change')
     DeviceEventEmitter.addListener('storage:change', listener)
+    return () => NativeStoreModule.unsubscribe('storage:change')
   }
+
 }
 
 export default new Storage()
