@@ -50,7 +50,7 @@
 
 - (void)subscribe:(EventEmitterDefaultCallback)callback
 {
-    [emitter on:@"storage:change" callback:callback];
+    [emitter on:@"state:change" callback:callback];
 }
 
 - (void)unsubscribe:(EventEmitterDefaultCallback) callback
@@ -60,7 +60,7 @@
 
 - (void)notify
 {
-    [emitter emit:@"storage:change" data:storage];
+    [emitter emit:@"state:change" data:storage];
 }
 
 @end

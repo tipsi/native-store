@@ -24,7 +24,7 @@ RCT_EXPORT_MODULE();
         storage = [TPSStorage sharedInstance];
         // Subscribe on store updates
         [storage subscribe:^(NSDictionary* state) {
-            [self sendEventWithName:@"storage:change" body:state];
+            [self sendEventWithName:@"state:change" body:state];
         }];
     }
     return self;
@@ -32,7 +32,7 @@ RCT_EXPORT_MODULE();
 
 - (NSArray<NSString *> *)supportedEvents
 {
-    return @[@"storage:change"];
+    return @[@"state:change"];
 }
 
 RCT_EXPORT_METHOD(setState:(NSDictionary *)state
