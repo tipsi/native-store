@@ -1,8 +1,9 @@
 package com.gettipsi.nativestore.store;
 
-import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableNativeMap;
 import com.facebook.react.bridge.WritableMap;
+import com.gettipsi.nativestore.util.HybridMap;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +15,7 @@ import java.util.Map;
  */
 public class NativeStore implements Observable {
     private static NativeStore ourInstance;
-    private static Map<String, ReadableMap> storeMap;
+    private static Map<String, HybridMap> storeMap;
     private List<Observer> observers;
 
 
@@ -51,9 +52,14 @@ public class NativeStore implements Observable {
     }
 
     public void changeData(final String key, final ReadableMap value) {
-        WritableMap sourceMap = Arguments.createMap();
-        sourceMap.merge(value);
-        storeMap.put(key, value);
+        changeData(key, ((ReadableNativeMap) value).toHashMap());
+    }
+
+    public void changeData(final String key, final HashMap<String, Object> value) {
+        if (storeMap.get(key) == null)
+            addItem(key, value);
+        else
+            updateItem(key, value);
         notifyObservers();
     }
 
@@ -62,8 +68,14 @@ public class NativeStore implements Observable {
     }
 
     public WritableMap getItem(final String key) {
-        final WritableMap item = Arguments.createMap();
-        item.merge(storeMap.get(key));
-        return item;
+        return storeMap.get(key).getWritableMap();
+    }
+
+    private void updateItem(final String key, final HashMap<String, Object> value) {
+        storeMap.get(key).updateItem(value);
+    }
+
+    private void addItem(final String key, final HashMap<String, Object> value) {
+        storeMap.put(key, new HybridMap(value));
     }
 }

@@ -42,8 +42,8 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Gen
     @ReactMethod
     public void init(ReadableMap options) {
         Log.d(TAG, "init: INIT");
-//        generatorRandomeString = new GeneratorRandomeString(this);
-//        generatorRandomeString.execute();
+        generatorRandomeString = new GeneratorRandomeString(this);
+        generatorRandomeString.execute();
     }
 
     @ReactMethod
@@ -66,7 +66,7 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Gen
 
     @ReactMethod
     public void setValue(final String key, final ReadableMap value) {
-        Log.d(TAG, "setValue: ");
+        Log.d(TAG, "setValue: "+value.getClass());
         NativeStore.getInstance().changeData(key, value);
     }
 
@@ -90,21 +90,26 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Gen
     @Override
     public void onNewString(String s) {
         Log.d(TAG, "onNewString: " + s);
+        final HashMap<String, Object> map = new HashMap<>();
+        map.put("uuid", s);
+        NativeStore.getInstance().changeData("main_state", map);
     }
 
 
     @Override
     public void onHostResume() {
-
+        Log.d(TAG, "onHostResume: INIT");
+        generatorRandomeString = new GeneratorRandomeString(this);
+        generatorRandomeString.execute();
     }
 
     @Override
     public void onHostPause() {
-
+        generatorRandomeString.close();
     }
 
     @Override
     public void onHostDestroy() {
-//        generatorRandomeString.close();
+
     }
 }

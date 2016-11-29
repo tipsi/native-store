@@ -1,6 +1,7 @@
 package com.gettipsi.nativestore.store;
 
-import com.facebook.react.bridge.ReadableMap;
+import com.gettipsi.nativestore.util.HybridMap;
+
 import java.util.Map;
 
 /**
@@ -8,5 +9,5 @@ import java.util.Map;
  */
 
 public interface Observer {
-    void update(Map<String, ReadableMap> soreState);
+    void update(Map<String, HybridMap> soreState);
 }

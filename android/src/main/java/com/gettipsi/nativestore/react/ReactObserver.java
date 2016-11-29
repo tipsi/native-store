@@ -4,11 +4,11 @@ import android.support.annotation.Nullable;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
-import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.gettipsi.nativestore.store.Observer;
+import com.gettipsi.nativestore.util.HybridMap;
 
 import java.util.Map;
 
@@ -28,11 +28,10 @@ public class ReactObserver implements Observer {
 
 
     @Override
-    public void update(Map<String, ReadableMap> soreState) {
+    public void update(Map<String, HybridMap> soreState) {
         final WritableArray convertedState = Arguments.createArray();
         for (String s : soreState.keySet()) {
-            final WritableMap copyMap = Arguments.createMap();
-            copyMap.merge(soreState.get(s));
+            final WritableMap copyMap = soreState.get(s).getWritableMap();
             convertedState.pushMap(copyMap);
         }
         sendEvent(reactContext, JSObserverName, convertedState);

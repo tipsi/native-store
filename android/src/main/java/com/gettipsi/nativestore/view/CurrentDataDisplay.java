@@ -3,9 +3,9 @@ package com.gettipsi.nativestore.view;
 
 import android.util.Log;
 
-import com.facebook.react.bridge.ReadableMap;
 import com.gettipsi.nativestore.store.NativeStore;
 import com.gettipsi.nativestore.store.Observer;
+import com.gettipsi.nativestore.util.HybridMap;
 
 import java.util.Map;
 
@@ -24,7 +24,7 @@ public class CurrentDataDisplay implements Observer {
     }
 
     @Override
-    public void update(Map<String, ReadableMap> soreState) {
+    public void update(Map<String, HybridMap> soreState) {
         Log.d(TAG, "update: NEW VALUE == "+soreState);
     }
 }
