@@ -5,16 +5,17 @@ import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.WritableMap;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by dmitriy on 11/22/16
  */
 public class NativeStore implements Observable {
-    private static NativeStore ourInstance = new NativeStore();
-    private static WritableMap storeMap;
+    private static NativeStore ourInstance;
+    private static Map<String, ReadableMap> storeMap;
     private List<Observer> observers;
-    private boolean item;
 
 
     public static NativeStore getInstance() {
@@ -29,7 +30,7 @@ public class NativeStore implements Observable {
 
     private static void init() {
         ourInstance = new NativeStore();
-        storeMap = Arguments.createMap();
+        storeMap = new HashMap<>();
     }
 
 
@@ -52,21 +53,17 @@ public class NativeStore implements Observable {
     public void changeData(final String key, final ReadableMap value) {
         WritableMap sourceMap = Arguments.createMap();
         sourceMap.merge(value);
-        storeMap.putMap(key, sourceMap);
+        storeMap.put(key, value);
         notifyObservers();
     }
 
     public void removeData(final String key) {
-        storeMap.putNull(key);
+        storeMap.remove(key);
     }
 
     public WritableMap getItem(final String key) {
-        if(storeMap.isNull(key))
-            return null;
-        else {
-            final WritableMap item = Arguments.createMap();
-            item.merge(storeMap.getMap(key));
-            return item;
-        }
+        final WritableMap item = Arguments.createMap();
+        item.merge(storeMap.get(key));
+        return item;
     }
 }

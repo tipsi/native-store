@@ -1,4 +1,4 @@
-import { NativeModules } from 'react-native'
+import { NativeModules , DeviceEventEmitter } from 'react-native'
 import NativeEventEmitter from 'react-native/Libraries/EventEmitter/NativeEventEmitter'
 
 //const { TPSStorageManager } = NativeModules
@@ -13,16 +13,19 @@ if (__DEV__) {
 
 class Storage {
   setState = state => (
-    TPSStorageManager.setValue('main_state',state)
+    NativeStoreModule.setValue('main_state', state)
   )
 
   getState = () => (
-    TPSStorageManager.getValue('setValue')
+    NativeStoreModule.getValue('main_state')
   )
 
-  subscribe = listener => (
-    TPSStorageEventEmitter.subscribe('storage:change', listener)
-  )
+
+  subscribe = listener => {
+//    TPSStorageEventEmitter.subscribe('storage:change', listener)
+    NativeStoreModule.subscribe('storage:change')
+    DeviceEventEmitter.addListener('storage:change', listener)
+  }
 }
 
 export default new Storage()

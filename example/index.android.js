@@ -118,9 +118,9 @@ export default class example extends Component {
   async componentDidMount() {
     this.listener = Storage.subscribe(this.handleStateChange)
 
-    // await Storage.setState({ test: 123, some: { nested: { value: 'here' } } })
-    // const state = await Storage.getState()
-    // console.log('RESULT:', state)
+//     await Storage.setState({ test: 123, some: { nested: { value: 'here' } } })
+//     const state = await Storage.getState()
+//     console.log('RESULT:', state)
   }
 
   componentWillUnmount() {
@@ -129,9 +129,10 @@ export default class example extends Component {
 
   handleStateChange = (state) => {
     console.log('STATE FROM JS:', state)
+    console.log('STATE FROM JS PARSED:', state[0])
     this.setState({
-      input: state.input,
-      uuid: state.uuid,
+      input: state[0].input,
+      uuid: state[0].uuid,
     })
   }
 

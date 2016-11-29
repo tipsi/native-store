@@ -1,4 +1,4 @@
-package com.awesomeproject;
+package com.example;
 
 import android.app.Application;
 import android.util.Log;

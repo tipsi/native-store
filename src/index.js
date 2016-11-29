@@ -1,3 +1,3 @@
-import NativeStore from './NativeStore'
+import Storage from './Storage'
 
-export default NativeStore
+export default Storage
