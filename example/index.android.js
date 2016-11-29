@@ -38,8 +38,8 @@ export default class example extends Component {
   handleStateChange = (state) => {
     console.log('STATE FROM JS:', state)
     this.setState({
-      input: state[0].input,
-      uuid: state[0].uuid,
+      input: state.main_state.input,
+      uuid: state.main_state.uuid,
     })
   }
 

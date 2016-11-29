@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
-import com.facebook.react.bridge.WritableArray;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.gettipsi.nativestore.store.Observer;
@@ -29,17 +28,17 @@ public class ReactObserver implements Observer {
 
     @Override
     public void update(Map<String, HybridMap> soreState) {
-        final WritableArray convertedState = Arguments.createArray();
-        for (String s : soreState.keySet()) {
-            final WritableMap copyMap = soreState.get(s).getWritableMap();
-            convertedState.pushMap(copyMap);
+        final WritableMap convertedState = Arguments.createMap();
+        for (String key : soreState.keySet()) {
+            final WritableMap copyMap = soreState.get(key).getWritableMap();
+            convertedState.putMap(key, copyMap);
         }
         sendEvent(reactContext, JSObserverName, convertedState);
     }
 
     private void sendEvent(ReactContext reactContext,
                            String eventName,
-                           @Nullable WritableArray params) {
+                           @Nullable WritableMap params) {
         reactContext
                 .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
                 .emit(eventName, params);
