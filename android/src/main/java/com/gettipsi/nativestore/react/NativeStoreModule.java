@@ -32,9 +32,6 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Gen
         this.reactContext = reactContext;
         observerMap = new HashMap<>();
         reactContext.addLifecycleEventListener(this);
-
-        generatorRandomeString = new GeneratorRandomeString(this);
-        generatorRandomeString.execute();
     }
 
     @Override
@@ -96,15 +93,16 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Gen
     @Override
     public void onHostResume() {
         Log.d(TAG, "onHostResume: ");
+        generatorRandomeString = new GeneratorRandomeString(this);
+        generatorRandomeString.execute();
     }
 
     @Override
     public void onHostPause() {
-
+        generatorRandomeString.close();
     }
 
     @Override
     public void onHostDestroy() {
-        generatorRandomeString.close();
     }
 }

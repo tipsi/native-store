@@ -48,7 +48,7 @@ public class GeneratorRandomeString extends AsyncTask<Void, String, Void> {
 
     public void close() {
         needString = false;
-        cancel(false);
+        cancel(true);
     }
 
     public interface RandomStringListener {
