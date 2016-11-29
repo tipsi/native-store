@@ -55,7 +55,7 @@ public class NativeStore implements Observable {
         changeData(key, ((ReadableNativeMap) value).toHashMap());
     }
 
-    public void changeData(final String key, final HashMap<String, Object> value) {
+    public synchronized void changeData(final String key, final HashMap<String, Object> value) {
         if (storeMap.get(key) == null)
             addItem(key, value);
         else

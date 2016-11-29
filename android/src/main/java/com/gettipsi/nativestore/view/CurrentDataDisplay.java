@@ -16,10 +16,8 @@ import java.util.Map;
 public class CurrentDataDisplay implements Observer {
 
     private static final String TAG = CurrentDataDisplay.class.getSimpleName();
-    private final NativeStore store;
 
     public CurrentDataDisplay(final NativeStore store){
-        this.store = store;
         store.registerObserver(this);
     }
 
