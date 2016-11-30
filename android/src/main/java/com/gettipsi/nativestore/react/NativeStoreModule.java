@@ -8,10 +8,10 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
-import com.facebook.react.bridge.WritableMap;
 import com.gettipsi.nativestore.store.NativeStore;
 import com.gettipsi.nativestore.store.Observer;
 import com.gettipsi.nativestore.util.GeneratorRandomeString;
+import com.gettipsi.nativestore.util.HybridMap;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -60,18 +60,18 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Gen
 
     @ReactMethod
     public void setValue(final String key, final ReadableMap value) {
-        Log.d(TAG, "setValue: "+value.getClass());
+        Log.d(TAG, "setValue: " + value.getClass());
         NativeStore.getInstance().changeData(key, value);
     }
 
     @ReactMethod
     public void getValue(final String key, final Promise promise) {
         Log.d(TAG, "getValue: ");
-        final WritableMap item = NativeStore.getInstance().getItem(key);
+        final HybridMap item = NativeStore.getInstance().getItem(key);
         if (item == null) {
             promise.reject(TAG, "No value for key \"" + key + "\"");
         } else {
-            promise.resolve(item);
+            promise.resolve(item.getWritableMap());
         }
     }
 
@@ -104,5 +104,6 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Gen
 
     @Override
     public void onHostDestroy() {
+        NativeStore.getInstance().close();
     }
 }

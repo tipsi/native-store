@@ -3,11 +3,8 @@ package com.gettipsi.nativestore.util;
 import android.support.annotation.Nullable;
 
 import com.facebook.react.bridge.Arguments;
-import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
-import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.gettipsi.nativestore.store.Observer;
-import com.gettipsi.nativestore.util.HybridMap;
 
 import java.util.Map;
 
@@ -18,7 +15,7 @@ import java.util.Map;
 public class ReactObserverStub implements Observer {
 
     private final String JSObserverName;
-    private WritableMap eventData;
+    private WritableMap currentStateMap;
     private int eventCounter;
 
     public ReactObserverStub(final String JSObserverName){
@@ -38,10 +35,14 @@ public class ReactObserverStub implements Observer {
 
     private void sendEvent(String eventName, @Nullable WritableMap params) {
         eventCounter++;
-        eventData = params;
+        currentStateMap = params;
     }
 
-    public void getEventsInfo(){
+    public int getEventCounter(){
+        return eventCounter;
+    }
 
+    public WritableMap getCurrentStateMap(){
+        return currentStateMap;
     }
 }

@@ -2,7 +2,6 @@ package com.gettipsi.nativestore.store;
 
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableNativeMap;
-import com.facebook.react.bridge.WritableMap;
 import com.gettipsi.nativestore.util.HybridMap;
 
 import java.util.ArrayList;
@@ -67,8 +66,8 @@ public class NativeStore implements Observable {
         storeMap.remove(key);
     }
 
-    public WritableMap getItem(final String key) {
-        return storeMap.get(key).getWritableMap();
+    public HybridMap getItem(final String key) {
+        return storeMap.get(key);
     }
 
     private void updateItem(final String key, final HashMap<String, Object> value) {
@@ -77,5 +76,15 @@ public class NativeStore implements Observable {
 
     private void addItem(final String key, final HashMap<String, Object> value) {
         storeMap.put(key, new HybridMap(value));
+    }
+
+    public void close() {
+        if (ourInstance != null) {
+            storeMap.clear();
+            storeMap = null;
+            observers.clear();
+            observers = null;
+            ourInstance = null;
+        }
     }
 }

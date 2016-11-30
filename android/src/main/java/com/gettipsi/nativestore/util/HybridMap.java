@@ -25,6 +25,10 @@ public class HybridMap {
         return constructWritableMap(sourceHashMap);
     }
 
+    public Map<String, Object> getNativeMap() {
+        return sourceHashMap;
+    }
+
     private WritableMap constructWritableMap(final HashMap<String, Object> source) {
         final WritableMap writableMap = Arguments.createMap();
         for (String key : source.keySet()) {
