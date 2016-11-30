@@ -9,10 +9,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>TPSStorageTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>3A70DCD91DEC7FC9003C6566</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3ADC018F1DEF2FC90055D904</key>
 		<dict>
 			<key>primary</key>
 			<true/>

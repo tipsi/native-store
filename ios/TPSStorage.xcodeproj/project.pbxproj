@@ -11,7 +11,19 @@
 		3A70DCE01DEC7FCA003C6566 /* TPSStorage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3A70DCDD1DEC7FCA003C6566 /* TPSStorage.h */; };
 		3A70DCE81DEC8097003C6566 /* TPSStorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A70DCE71DEC8097003C6566 /* TPSStorageManager.m */; };
 		3A70DCEB1DEC80EC003C6566 /* EventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A70DCEA1DEC80EC003C6566 /* EventEmitter.m */; };
+		3ADC01931DEF2FC90055D904 /* TPSStorageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC01921DEF2FC90055D904 /* TPSStorageTests.m */; };
+		3ADC01951DEF2FC90055D904 /* libTPSStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A70DCDA1DEC7FCA003C6566 /* libTPSStorage.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3ADC01961DEF2FC90055D904 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A70DCD21DEC7FC9003C6566 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A70DCD91DEC7FC9003C6566;
+			remoteInfo = TPSStorage;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3A70DCD81DEC7FC9003C6566 /* CopyFiles */ = {
@@ -34,6 +46,9 @@
 		3A70DCE71DEC8097003C6566 /* TPSStorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPSStorageManager.m; sourceTree = "<group>"; };
 		3A70DCE91DEC80EC003C6566 /* EventEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEmitter.h; sourceTree = "<group>"; };
 		3A70DCEA1DEC80EC003C6566 /* EventEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventEmitter.m; sourceTree = "<group>"; };
+		3ADC01901DEF2FC90055D904 /* TPSStorageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TPSStorageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ADC01921DEF2FC90055D904 /* TPSStorageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPSStorageTests.m; sourceTree = "<group>"; };
+		3ADC01941DEF2FC90055D904 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +59,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3ADC018D1DEF2FC90055D904 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ADC01951DEF2FC90055D904 /* libTPSStorage.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -51,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				3A70DCDC1DEC7FCA003C6566 /* TPSStorage */,
+				3ADC01911DEF2FC90055D904 /* TPSStorageTests */,
 				3A70DCDB1DEC7FCA003C6566 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				3A70DCDA1DEC7FCA003C6566 /* libTPSStorage.a */,
+				3ADC01901DEF2FC90055D904 /* TPSStorageTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,6 +99,15 @@
 				3A70DCEA1DEC80EC003C6566 /* EventEmitter.m */,
 			);
 			path = TPSStorage;
+			sourceTree = "<group>";
+		};
+		3ADC01911DEF2FC90055D904 /* TPSStorageTests */ = {
+			isa = PBXGroup;
+			children = (
+				3ADC01921DEF2FC90055D904 /* TPSStorageTests.m */,
+				3ADC01941DEF2FC90055D904 /* Info.plist */,
+			);
+			path = TPSStorageTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +130,24 @@
 			productReference = 3A70DCDA1DEC7FCA003C6566 /* libTPSStorage.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		3ADC018F1DEF2FC90055D904 /* TPSStorageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3ADC019A1DEF2FC90055D904 /* Build configuration list for PBXNativeTarget "TPSStorageTests" */;
+			buildPhases = (
+				3ADC018C1DEF2FC90055D904 /* Sources */,
+				3ADC018D1DEF2FC90055D904 /* Frameworks */,
+				3ADC018E1DEF2FC90055D904 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3ADC01971DEF2FC90055D904 /* PBXTargetDependency */,
+			);
+			name = TPSStorageTests;
+			productName = TPSStorageTests;
+			productReference = 3ADC01901DEF2FC90055D904 /* TPSStorageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -106,6 +158,10 @@
 				ORGANIZATIONNAME = Tipsi;
 				TargetAttributes = {
 					3A70DCD91DEC7FC9003C6566 = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+					};
+					3ADC018F1DEF2FC90055D904 = {
 						CreatedOnToolsVersion = 8.2;
 						ProvisioningStyle = Automatic;
 					};
@@ -124,9 +180,20 @@
 			projectRoot = "";
 			targets = (
 				3A70DCD91DEC7FC9003C6566 /* TPSStorage */,
+				3ADC018F1DEF2FC90055D904 /* TPSStorageTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3ADC018E1DEF2FC90055D904 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A70DCD61DEC7FC9003C6566 /* Sources */ = {
@@ -139,7 +206,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3ADC018C1DEF2FC90055D904 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3ADC01931DEF2FC90055D904 /* TPSStorageTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3ADC01971DEF2FC90055D904 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A70DCD91DEC7FC9003C6566 /* TPSStorage */;
+			targetProxy = 3ADC01961DEF2FC90055D904 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3A70DCE11DEC7FCA003C6566 /* Debug */ = {
@@ -237,6 +320,7 @@
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 					"${SRCROOT}/../../../ios/Pods/Headers/Public/**",
+					"$(SRCROOT)/../node_modules/react-native/React/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -251,10 +335,31 @@
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 					"${SRCROOT}/../../../ios/Pods/Headers/Public/**",
+					"$(SRCROOT)/../node_modules/react-native/React/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3ADC01981DEF2FC90055D904 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TPSStorageTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tipsi.TPSStorageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3ADC01991DEF2FC90055D904 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TPSStorageTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tipsi.TPSStorageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -278,6 +383,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		3ADC019A1DEF2FC90055D904 /* Build configuration list for PBXNativeTarget "TPSStorageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3ADC01981DEF2FC90055D904 /* Debug */,
+				3ADC01991DEF2FC90055D904 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

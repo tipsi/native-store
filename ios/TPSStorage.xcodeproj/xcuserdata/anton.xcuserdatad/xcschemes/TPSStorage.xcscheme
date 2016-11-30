@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "3ADC018F1DEF2FC90055D904"
+               BuildableName = "TPSStorageTests.xctest"
+               BlueprintName = "TPSStorageTests"
+               ReferencedContainer = "container:TPSStorage.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "3A70DCD91DEC7FC9003C6566"
+            BuildableName = "libTPSStorage.a"
+            BlueprintName = "TPSStorage"
+            ReferencedContainer = "container:TPSStorage.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
