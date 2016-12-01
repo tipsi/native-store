@@ -15,14 +15,14 @@ import {
 export default class example extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
+      <View style={styles.container} testID="testid1">
+        <Text style={styles.welcome} testID="testid2">
           Welcome to React Native!
         </Text>
-        <Text style={styles.instructions}>
+        <Text style={styles.instructions} testID="testid3">
           To get started, edit index.android.js
         </Text>
-        <Text style={styles.instructions}>
+        <Text style={styles.instructions} testID="testid4">
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>

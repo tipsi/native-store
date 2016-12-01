@@ -11,7 +11,7 @@
 @implementation TPSStorage
 {
     EventEmitter *emitter;
-    NSMutableDictionary *storage;
+    NSDictionary *state;
 }
 
 + (instancetype)sharedInstance
@@ -31,21 +31,21 @@
     self = [super init];
     if (self != nil) {
         emitter = [EventEmitter new];
-        storage = [NSMutableDictionary new];
+        state = [NSMutableDictionary new];
     }
     return self;
 }
 
-- (void)setState:(NSDictionary *)state
+- (void)setState:(NSDictionary *)nextState
 {
-    [storage setDictionary:state];
+    state = nextState;
     
     [self notify];
 }
 
 - (NSDictionary *)getState
 {
-    return storage;
+    return state;
 }
 
 - (void)subscribe:(EventEmitterDefaultCallback)callback
@@ -60,7 +60,7 @@
 
 - (void)notify
 {
-    [emitter emit:@"state:change" data:storage];
+    [emitter emit:@"state:change" data:state];
 }
 
 @end

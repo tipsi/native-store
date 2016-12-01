@@ -10,11 +10,15 @@
 #import "TPSStorage.h"
 
 @implementation Dummy
+{
+  TPSStorage *storage;
+}
 
 - (id)init
 {
   self = [super init];
   if (self != nil) {
+    storage = [TPSStorage sharedInstance];
     [self startTest];
   }
   return self;
@@ -22,19 +26,19 @@
 
 - (void)startTest
 {
-  [[TPSStorage sharedInstance] subscribe:^(NSDictionary* state) {
-    NSLog(@"STATE FROM NATIVE:%@", state);
+  [storage subscribe:^(NSDictionary* state) {
+    NSLog(@"STATE CHANGED:%@", state);
   }];
   
   [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(onTick:) userInfo:nil repeats:YES];
 }
 
 -(void)onTick:(NSTimer *)timer {
-  NSDictionary *state = [[TPSStorage sharedInstance] getState];
+  NSMutableDictionary *nextState = [NSMutableDictionary dictionaryWithDictionary:[storage getState]];
 
-  [state setValue:[[NSUUID UUID] UUIDString] forKey:@"uuid"];
+  [nextState setValue:[[NSUUID UUID] UUIDString] forKey:@"uuid"];
 
-  [[TPSStorage sharedInstance] setState:state];
+  [[TPSStorage sharedInstance] setState:nextState];
 }
 
 @end

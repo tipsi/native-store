@@ -11,7 +11,7 @@
 
 @interface TPSStorage : NSObject
 
-- (void)setState:(NSDictionary *)state;
+- (void)setState:(NSDictionary *)nextState;
 - (NSDictionary *)getState;
 - (void)subscribe:(EventEmitterDefaultCallback) callback;
 - (void)unsubscribe:(EventEmitterDefaultCallback) callback;
