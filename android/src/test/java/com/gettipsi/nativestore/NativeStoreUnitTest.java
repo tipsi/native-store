@@ -11,13 +11,15 @@ import com.gettipsi.nativestore.util.ReactObserverStub;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.modules.junit4.rule.PowerMockRule;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,9 +29,12 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(PowerMockRunner.class)
+@RunWith(JUnit4.class)
 @PrepareForTest({Arguments.class})
 public class NativeStoreUnitTest {
+
+    @Rule
+    public final PowerMockRule rule = new PowerMockRule();
 
     private static final String REACT_OBSERVER_NAME = "REACT_OBSERVER_NAME";
     private static final String TEST_MAP_NAME = "test_map_name";
@@ -39,7 +44,6 @@ public class NativeStoreUnitTest {
 
     //Without this lines I have the same problem:
     // http://stackoverflow.com/questions/35275772/unsatisfiedlinkerror-when-unit-testing-writablenativemap
-    @PrepareForTest({Arguments.class})
     @Before
     public void setUp() {
         PowerMockito.mockStatic(Arguments.class);
