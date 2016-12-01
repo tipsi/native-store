@@ -72,6 +72,8 @@ export default class example extends Component {
         </Text>
         <View style={styles.inputContainer}>
           <TextInput
+            accessible
+            accessibilityLabel={'textInput'}
             style={styles.input}
             onChangeText={this.handleChangeTextInState}
           />
