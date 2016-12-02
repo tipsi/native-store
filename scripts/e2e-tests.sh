@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 isIOS() {
   [ "$(uname)" == "Darwin" ]
 }
@@ -41,15 +43,18 @@ fi
 ###################
 
 # Build Android app
-npm run build:android || true
+# npm run build:android
 # Build iOS app
-isIOS && (npm run build:ios || true)
+isIOS && npm run build:ios
 
 ###################
 # TESTS           #
 ###################
 
 # Run Android e2e tests
-#snpm run test:android || true
+# npm run test:android
 # Run iOS e2e tests
-(isIOS && (npm run test:ios || true)) || true
+# isIOS && npm run test:ios || exit $?
+if isIOS
+  then npm run test:ios
+fi

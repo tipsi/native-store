@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 isIOS() {
   [ "$(uname)" == "Darwin" ]
 }
@@ -31,6 +33,6 @@ npm install
 ###################
 
 # Run Android e2e tests
-# npm run test:android || true
+# npm run test:android
 # Run iOS e2e tests
-(isIOS && (npm run test:ios || true)) || true
+isIOS && npm run test:ios
