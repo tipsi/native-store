@@ -10,21 +10,19 @@ import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.gettipsi.nativestore.store.NativeStore;
 import com.gettipsi.nativestore.store.Observer;
-import com.gettipsi.nativestore.util.GeneratorRandomeString;
 import com.gettipsi.nativestore.util.HybridMap;
 
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class NativeStoreModule extends ReactContextBaseJavaModule implements GeneratorRandomeString.RandomStringListener, LifecycleEventListener {
+public class NativeStoreModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
 
     private static final String TAG = NativeStoreModule.class.getSimpleName();
     private static final String MODULE_NAME = "NativeStoreModule";
     private final ReactApplicationContext reactContext;
 
     private Map<String, Observer> observerMap;
-    private GeneratorRandomeString generatorRandomeString;
 
 
     public NativeStoreModule(ReactApplicationContext reactContext) {
@@ -82,24 +80,12 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Gen
     }
 
     @Override
-    public void onNewString(String s) {
-        Log.d(TAG, "onNewString: " + s);
-        final HashMap<String, Object> map = new HashMap<>();
-        map.put("uuid", s);
-        NativeStore.getInstance().changeData("main_state", map);
-    }
-
-
-    @Override
     public void onHostResume() {
         Log.d(TAG, "onHostResume: ");
-        generatorRandomeString = new GeneratorRandomeString(this);
-        generatorRandomeString.execute();
     }
 
     @Override
     public void onHostPause() {
-        generatorRandomeString.close();
     }
 
     @Override

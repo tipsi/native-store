@@ -174,8 +174,8 @@ export default class example extends Component {
   handleStateChange = (state) => {
     console.log('STATE FROM JS:', state)
     this.setState({
-      input: state.input,
-      uuid: state.uuid,
+      input: state.main_state.input,
+      uuid: state.main_state.uuid,
     })
   }
 

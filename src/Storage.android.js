@@ -6,7 +6,11 @@ const TPSStorageEventEmitter = new NativeEventEmitter(NativeStoreModule)
 
 
 if (__DEV__) {
-  TPSStorageEventEmitter.addListener('storage:change', () => {})
+  // Fix warning about empty listeners in DEV
+  TPSStorageEmitter.addListener(
+    'state:change',
+    () => {}
+  )
 }
 
 class Storage {
