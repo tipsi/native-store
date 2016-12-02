@@ -53,7 +53,7 @@ public class GeneratorRandomeString extends AsyncTask<Void, String, Void> {
         Log.d("TAGGG", "onNewString: " + s);
         final HashMap<String, Object> map = new HashMap<>();
         map.put("uuid", s);
-        NativeStore.getInstance().changeData("main_state", map);
+        NativeStore.getInstance().setState(map);
     }
 
     public void close() {

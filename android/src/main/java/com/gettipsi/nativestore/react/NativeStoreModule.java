@@ -9,11 +9,7 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.gettipsi.nativestore.store.NativeStore;
-import com.gettipsi.nativestore.store.Observer;
 import com.gettipsi.nativestore.util.HybridMap;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class NativeStoreModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
@@ -21,14 +17,12 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Lif
     private static final String TAG = NativeStoreModule.class.getSimpleName();
     private static final String MODULE_NAME = "NativeStoreModule";
     private final ReactApplicationContext reactContext;
-
-    private Map<String, Observer> observerMap;
+    private ReactObserver reactObserver;
 
 
     public NativeStoreModule(ReactApplicationContext reactContext) {
         super(reactContext);
         this.reactContext = reactContext;
-        observerMap = new HashMap<>();
         reactContext.addLifecycleEventListener(this);
     }
 
@@ -37,46 +31,29 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Lif
         return MODULE_NAME;
     }
 
-
     @ReactMethod
-    public void subscribe(final String reactObserverName) {
-        Log.d(TAG, "subscribe: ");
-        final ReactObserver observer = new ReactObserver(reactObserverName, reactContext);
-        observerMap.put(reactObserverName, observer);
-        NativeStore.getInstance().registerObserver(observer);
-    }
-
-    @ReactMethod
-    public void unsubscribe(final String reactObserverName) {
-        Log.d(TAG, "unsubscribe: ");
-        final ReactObserver observer = (ReactObserver) observerMap.get(reactObserverName);
-        if (observer != null) {
-            NativeStore.getInstance().removeObserver(observer);
-            observerMap.remove(reactObserverName);
-        }
-    }
-
-    @ReactMethod
-    public void setValue(final String key, final ReadableMap value) {
+    public void setState(final ReadableMap value) {
         Log.d(TAG, "setValue: " + value.getClass());
-        NativeStore.getInstance().changeData(key, value);
+        NativeStore.getInstance().setState(value);
     }
 
     @ReactMethod
-    public void getValue(final String key, final Promise promise) {
+    public void getState(final Promise promise) {
         Log.d(TAG, "getValue: ");
-        final HybridMap item = NativeStore.getInstance().getItem(key);
+        registerReactObserver();
+        final HybridMap item = NativeStore.getInstance().getState();
         if (item == null) {
-            promise.reject(TAG, "No value for key \"" + key + "\"");
+            promise.reject(TAG, "State is empty");
         } else {
             promise.resolve(item.getWritableMap());
         }
     }
 
-    @ReactMethod
-    public void removeValue(final String key) {
-        Log.d(TAG, "removeValue: ");
-        NativeStore.getInstance().removeData(key);
+    private void registerReactObserver(){
+        if(reactObserver == null){
+            reactObserver = new ReactObserver(reactContext);
+            NativeStore.getInstance().registerObserver(reactObserver);
+        }
     }
 
     @Override

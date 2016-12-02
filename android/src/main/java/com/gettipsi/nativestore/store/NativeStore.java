@@ -7,15 +7,14 @@ import com.gettipsi.nativestore.util.HybridMap;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by dmitriy on 11/22/16
  */
 public class NativeStore implements Observable {
     private static NativeStore ourInstance;
-    private static Map<String, HybridMap> storeMap;
-    private List<Observer> observers;
+    private static HybridMap state;
+    private static List<Observer> observers;
 
 
     public static NativeStore getInstance() {
@@ -30,7 +29,7 @@ public class NativeStore implements Observable {
 
     private static void init() {
         ourInstance = new NativeStore();
-        storeMap = new HashMap<>();
+//        storeMap = new HashMap<>();
     }
 
 
@@ -47,44 +46,32 @@ public class NativeStore implements Observable {
     @Override
     public void notifyObservers() {
         for (Observer observer : observers)
-            observer.update(storeMap);
+            observer.update(state);
     }
 
-    public void changeData(final String key, final ReadableMap value) {
-        changeData(key, ((ReadableNativeMap) value).toHashMap());
-    }
 
-    public synchronized void changeData(final String key, final HashMap<String, Object> value) {
-        if (storeMap.get(key) == null)
-            addItem(key, value);
+    public synchronized void setState(final HashMap<String, Object> value) {
+        if (state == null)
+            state = new HybridMap(value);
         else
-            updateItem(key, value);
+            state.updateItem(value);
         notifyObservers();
-    }
-
-    public void removeData(final String key) {
-        storeMap.remove(key);
-    }
-
-    public HybridMap getItem(final String key) {
-        return storeMap.get(key);
-    }
-
-    private void updateItem(final String key, final HashMap<String, Object> value) {
-        storeMap.get(key).updateItem(value);
-    }
-
-    private void addItem(final String key, final HashMap<String, Object> value) {
-        storeMap.put(key, new HybridMap(value));
     }
 
     public void close() {
         if (ourInstance != null) {
-            storeMap.clear();
-            storeMap = null;
+            state = null;
             observers.clear();
             observers = null;
             ourInstance = null;
         }
+    }
+
+    public void setState(final ReadableMap value) {
+        setState(((ReadableNativeMap) value).toHashMap());
+    }
+
+    public HybridMap getState() {
+        return null;
     }
 }

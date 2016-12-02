@@ -2,14 +2,11 @@ package com.gettipsi.nativestore.react;
 
 import android.support.annotation.Nullable;
 
-import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
 import com.gettipsi.nativestore.store.Observer;
 import com.gettipsi.nativestore.util.HybridMap;
-
-import java.util.Map;
 
 /**
  * Created by dmitriy on 11/22/16
@@ -17,23 +14,17 @@ import java.util.Map;
 
 public class ReactObserver implements Observer {
 
-    private final String JSObserverName;
+    private static final String JS_OBSERVER_NAME = "storage:change";
     private final ReactContext reactContext;
 
-    public ReactObserver(final String JSObserverName, ReactContext reactContext){
-        this.JSObserverName = JSObserverName;
+    public ReactObserver(ReactContext reactContext) {
         this.reactContext = reactContext;
     }
 
 
     @Override
-    public void update(Map<String, HybridMap> soreState) {
-        final WritableMap convertedState = Arguments.createMap();
-        for (String key : soreState.keySet()) {
-            final WritableMap copyMap = soreState.get(key).getWritableMap();
-            convertedState.putMap(key, copyMap);
-        }
-        sendEvent(reactContext, JSObserverName, convertedState);
+    public void update(HybridMap soreState) {
+        sendEvent(reactContext, JS_OBSERVER_NAME, soreState.getWritableMap());
     }
 
     private void sendEvent(ReactContext reactContext,

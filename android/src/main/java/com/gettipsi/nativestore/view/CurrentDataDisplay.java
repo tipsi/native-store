@@ -7,8 +7,6 @@ import com.gettipsi.nativestore.store.NativeStore;
 import com.gettipsi.nativestore.store.Observer;
 import com.gettipsi.nativestore.util.HybridMap;
 
-import java.util.Map;
-
 /**
  * Created by dmitriy on 11/22/16
  */
@@ -22,7 +20,7 @@ public class CurrentDataDisplay implements Observer {
     }
 
     @Override
-    public void update(Map<String, HybridMap> soreState) {
+    public void update(HybridMap soreState) {
         Log.d(TAG, "update: NEW VALUE == "+soreState);
     }
 }

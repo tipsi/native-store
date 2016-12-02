@@ -7,27 +7,40 @@ const TPSStorageEventEmitter = new NativeEventEmitter(NativeStoreModule)
 
 if (__DEV__) {
   // Fix warning about empty listeners in DEV
-  TPSStorageEmitter.addListener(
+  DeviceEventEmitter.addListener(
     'state:change',
     () => {}
   )
 }
 
+function validateState(state) {
+  if (typeof state !== 'object') {
+    throw new Error('State should be an Object')
+  }
+  try {
+    JSON.stringify(state)
+  } catch (error) {
+    throw new Error('State should be serializable')
+  }
+}
+
 class Storage {
-  setState = state => (
-    NativeStoreModule.setValue('main_state', state)
-  )
+  setState = (state) => {
+    validateState(state)
+    NativeStoreModule.setState(state)
+  }
 
   getState = () => (
-    NativeStoreModule.getValue('main_state')
+    NativeStoreModule.getState()
   )
 
   subscribe = listener => {
-    NativeStoreModule.subscribe('storage:change')
-    DeviceEventEmitter.addListener('storage:change', listener)
+//    NativeStoreModule.subscribe('storage:change')
+    const result = DeviceEventEmitter.addListener('storage:change', listener)
     return () => {
-      DeviceEventEmitter.removeListener('storage:change', listener)
-      NativeStoreModule.unsubscribe('storage:change')
+//      DeviceEventEmitter.removeListener('storage:change', listener)
+//      NativeStoreModule.unsubscribe('storage:change')
+      result.remove();
     }
   }
 
