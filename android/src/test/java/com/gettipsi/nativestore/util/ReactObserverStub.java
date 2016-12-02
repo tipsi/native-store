@@ -24,13 +24,8 @@ public class ReactObserverStub implements Observer {
 
 
     @Override
-    public void update(Map<String, HybridMap> soreState) {
-        final WritableMap convertedState = Arguments.createMap();
-        for (String key : soreState.keySet()) {
-            final WritableMap copyMap = soreState.get(key).getWritableMap();
-            convertedState.putMap(key, copyMap);
-        }
-        sendEvent(JSObserverName, convertedState);
+    public void update(HybridMap soreState) {
+        sendEvent(JSObserverName, soreState.getWritableMap());
     }
 
     private void sendEvent(String eventName, @Nullable WritableMap params) {

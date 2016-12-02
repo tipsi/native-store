@@ -11,19 +11,14 @@ import java.util.Map;
 
 public class NativeObserverStub implements Observer {
 
-    private Map<String, Map> currentStateMap;
+    private Map<String, Object> currentStateMap;
     private int updateCounter;
 
 
 
     @Override
-    public void update(Map<String, HybridMap> soreState) {
-        final Map<String , Map> stateMap = new HashMap<>();
-        for (String key : soreState.keySet()) {
-            final Map<String , Object> copyMap = soreState.get(key).getNativeMap();
-            stateMap.put(key, copyMap);
-        }
-        currentStateMap = stateMap;
+    public void update(HybridMap soreState) {
+        currentStateMap = soreState.getNativeMap();
         updateCounter++;
     }
 
@@ -31,7 +26,7 @@ public class NativeObserverStub implements Observer {
         return updateCounter;
     }
 
-    public Map<String, Map> getCurrentStateMap(){
+    public Map<String, Object> getCurrentStateMap(){
         return currentStateMap;
     }
 }

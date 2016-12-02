@@ -26,7 +26,6 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(JUnit4.class)
@@ -37,7 +36,6 @@ public class NativeStoreUnitTest {
     public final PowerMockRule rule = new PowerMockRule();
 
     private static final String REACT_OBSERVER_NAME = "REACT_OBSERVER_NAME";
-    private static final String TEST_MAP_NAME = "test_map_name";
     private static final String TEST_KEY = "test_key";
     private static final String TEST_VALUE = "test_value";
     private NativeStore nativeStore;
@@ -73,19 +71,11 @@ public class NativeStoreUnitTest {
     }
 
     @Test
-    public void setValueTest() throws Exception {
-        final Map testMap = setValue(TEST_MAP_NAME, TEST_KEY, TEST_VALUE);
-        final Map mapFromStore = nativeStore.getItem(TEST_MAP_NAME).getNativeMap();
+    public void setStateTest() throws Exception {
+        final Map testMap = setValue(TEST_KEY, TEST_VALUE);
+        final Map mapFromStore = nativeStore.getState().getNativeMap();
 
         assertEquals("Object didn't added to store", mapFromStore, testMap);
-    }
-
-    @Test
-    public void removeValueTest() throws Exception {
-        setValue(TEST_MAP_NAME + "_2", TEST_KEY, TEST_VALUE);
-        removeValue(TEST_MAP_NAME + "_2");
-
-        assertNull("Object didn't remove from store", nativeStore.getItem(TEST_MAP_NAME));
     }
 
     @Test
@@ -105,7 +95,7 @@ public class NativeStoreUnitTest {
         unsubscribe(observer);
         changeStoreStateThreeTimes();
 
-        assertEquals("The observer was not unsubscribe", observer.getEventCounter() , 0);
+        assertEquals("The observer was not unsubscribe", observer.getEventCounter(), 0);
     }
 
     @Test
@@ -125,19 +115,16 @@ public class NativeStoreUnitTest {
         unsubscribe(observer);
         changeStoreStateThreeTimes();
 
-        assertEquals("The observer was not unsubscribe", observer.getUpdateCounter() , 0);
+        assertEquals("The observer was not unsubscribe", observer.getUpdateCounter(), 0);
     }
 
-    private Map<String, Object> setValue(final String mapName, final String key, final String value) {
+    private Map<String, Object> setValue(final String key, final String value) {
         final HashMap<String, Object> testMap = new HashMap<>();
         testMap.put(key, value);
-        nativeStore.changeData(mapName, testMap);
+        nativeStore.setState(testMap);
         return testMap;
     }
 
-    private void removeValue(final String mapName) {
-        nativeStore.removeData(mapName);
-    }
 
     private ReactObserverStub subscribeReact(final String observerName) {
         final ReactObserverStub observerStub = new ReactObserverStub(observerName);
@@ -155,9 +142,9 @@ public class NativeStoreUnitTest {
         nativeStore.removeObserver(observer);
     }
 
-    private void changeStoreStateThreeTimes(){
+    private void changeStoreStateThreeTimes() {
         for (int i = 0; i < 3; i++) {
-            setValue(TEST_MAP_NAME, TEST_KEY + i, TEST_VALUE + i);
+            setValue(TEST_KEY + i, TEST_VALUE + i);
         }
     }
 }
