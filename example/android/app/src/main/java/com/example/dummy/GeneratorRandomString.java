@@ -11,13 +11,13 @@ import java.util.Random;
 /**
  * Created by dmitriy on 11/28/16
  */
-public class GeneratorRandomeString extends AsyncTask<Void, String, Void> {
+public class GeneratorRandomString extends AsyncTask<Void, String, Void> {
 
     private static final String ALLOWED_CHARACTERS = "0123456789qwertyuiopasdfghjklzxcvbnm";
     private static final int S_LENGTH = 21;
     private boolean needString;
 
-    public GeneratorRandomeString() {
+    public GeneratorRandomString() {
         needString = true;
     }
 
@@ -50,7 +50,6 @@ public class GeneratorRandomeString extends AsyncTask<Void, String, Void> {
 
     //Emulate changes store state from native
     private void changeStateFromNative(String s) {
-        Log.d("TAGGG", "onNewString: " + s);
         final HashMap<String, Object> map = new HashMap<>();
         map.put("uuid", s);
         NativeStore.getInstance().setState(map);

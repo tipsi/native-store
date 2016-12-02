@@ -33,14 +33,14 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Lif
 
     @ReactMethod
     public void setState(final ReadableMap value) {
-        Log.d(TAG, "setValue: " + value.getClass());
+        Log.d(TAG, "setState: " + value.getClass());
+        registerReactObserver();
         NativeStore.getInstance().setState(value);
     }
 
     @ReactMethod
     public void getState(final Promise promise) {
-        Log.d(TAG, "getValue: ");
-        registerReactObserver();
+        Log.d(TAG, "getState: ");
         final HybridMap item = NativeStore.getInstance().getState();
         if (item == null) {
             promise.reject(TAG, "State is empty");
@@ -59,6 +59,7 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Lif
     @Override
     public void onHostResume() {
         Log.d(TAG, "onHostResume: ");
+        registerReactObserver();
     }
 
     @Override
@@ -68,5 +69,6 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Lif
     @Override
     public void onHostDestroy() {
         NativeStore.getInstance().close();
+        reactObserver = null;
     }
 }

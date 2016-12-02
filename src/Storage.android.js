@@ -1,8 +1,6 @@
 import { NativeModules , DeviceEventEmitter } from 'react-native'
-import NativeEventEmitter from 'react-native/Libraries/EventEmitter/NativeEventEmitter'
 
 const { NativeStoreModule } = NativeModules
-const TPSStorageEventEmitter = new NativeEventEmitter(NativeStoreModule)
 
 
 if (__DEV__) {
@@ -35,15 +33,9 @@ class Storage {
   )
 
   subscribe = listener => {
-//    NativeStoreModule.subscribe('storage:change')
     const result = DeviceEventEmitter.addListener('storage:change', listener)
-    return () => {
-//      DeviceEventEmitter.removeListener('storage:change', listener)
-//      NativeStoreModule.unsubscribe('storage:change')
-      result.remove();
-    }
+    return () => result.remove()
   }
-
 }
 
 export default new Storage()

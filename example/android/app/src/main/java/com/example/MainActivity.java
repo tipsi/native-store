@@ -1,11 +1,11 @@
 package com.example;
 
-import com.example.dummy.GeneratorRandomeString;
+import com.example.dummy.GeneratorRandomString;
 import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {
 
-    private GeneratorRandomeString generatorRandomeString;
+    private GeneratorRandomString generatorRandomeString;
 
     /**
      * Returns the name of the main component registered from JavaScript.
@@ -16,11 +16,11 @@ public class MainActivity extends ReactActivity {
         return "example";
     }
 
-    //Start-stop GeneratorRandomeString for emulate change store state from native
+    //Start-stop GeneratorRandomString for emulate change store state from native
     @Override
     protected void onResume() {
         super.onResume();
-        generatorRandomeString = new GeneratorRandomeString();
+        generatorRandomeString = new GeneratorRandomString();
         generatorRandomeString.execute();
     }
 

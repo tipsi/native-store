@@ -29,9 +29,7 @@ public class NativeStore implements Observable {
 
     private static void init() {
         ourInstance = new NativeStore();
-//        storeMap = new HashMap<>();
     }
-
 
     @Override
     public void registerObserver(Observer o) {
@@ -49,13 +47,20 @@ public class NativeStore implements Observable {
             observer.update(state);
     }
 
-
     public synchronized void setState(final HashMap<String, Object> value) {
         if (state == null)
             state = new HybridMap(value);
         else
             state.updateItem(value);
         notifyObservers();
+    }
+
+    public void setState(final ReadableMap value) {
+        setState(((ReadableNativeMap) value).toHashMap());
+    }
+
+    public HybridMap getState() {
+        return state;
     }
 
     public void close() {
@@ -65,13 +70,5 @@ public class NativeStore implements Observable {
             observers = null;
             ourInstance = null;
         }
-    }
-
-    public void setState(final ReadableMap value) {
-        setState(((ReadableNativeMap) value).toHashMap());
-    }
-
-    public HybridMap getState() {
-        return null;
     }
 }
