@@ -4,6 +4,7 @@
  * @flow
  */
 
+
 import React, { Component } from 'react'
 import {
   AppRegistry,
@@ -15,28 +16,13 @@ import {
 import Storage from 'native-store'
 
 export default class example extends Component {
-
   state = {
     input: '',
     uuid: '',
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     this.unsubscribe = Storage.subscribe(this.handleStateChange)
-
-    await Storage.setState({
-      test: 1,
-      some: { nested: { value: 'here' } },
-      array: [10, 11, { key: true }],
-      go: false,
-    })
-
-    try{
-      const state = await Storage.getState()
-      console.log('RESULT:', state)
-    } catch (error){
-      console.log('Error:', error)
-    }
   }
 
   componentWillUnmount() {
@@ -44,23 +30,15 @@ export default class example extends Component {
   }
 
   handleStateChange = (state) => {
-    console.log('STATE FROM JS:', state)
     this.setState({
       input: state.input,
       uuid: state.uuid,
     })
   }
 
-  // updateValueFromNative = (value) => {
-  //   this.setState({ fromNative: value })
-  // }
-  //
-  // updateValueInput = (value) => {
-  //   this.setState({ fromJS: value })
-  // }
-  //
-  handleChangeTextInState = (text) => {
-    Storage.setState({ input: text })
+  handleChangeTextInState = async (text) => {
+    const state = await Storage.getState()
+    Storage.setState({ ...state, input: text })
   }
 
   render() {
@@ -69,32 +47,47 @@ export default class example extends Component {
         <Text style={styles.welcome}>
           Storage Example
         </Text>
-        <Text style={styles.label}>
-          Value from native:
-        </Text>
-        <Text style={styles.value}>
-          {this.state.uuid}
-        </Text>
-        <Text style={styles.label}>
-          Input result:
-        </Text>
-        <Text style={styles.value}>
-          {this.state.input}
-        </Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            accessible
-            accessibilityLabel={'textInput'}
-            style={styles.input}
-            onChangeText={this.handleChangeTextInState}
-          />
+
+        <View style={styles.box}>
+          <Text style={styles.label}>
+            Value from input:
+          </Text>
+          <Text style={styles.value} testID={'valueFromInput'}
+              accessible
+              accessibilityLabel={'valueFromInput'}>
+            {this.state.input || 'empty value'}
+          </Text>
+          <View style={styles.inputContainer}>
+            <TextInput
+              accessible
+              accessibilityLabel={'textInput'}
+              style={styles.input}
+              onChangeText={this.handleChangeTextInState}
+            />
+          </View>
+          <Text style={styles.instructions}>
+            {'subscribe (js) -> set state (js) -> print result (js)'}
+          </Text>
         </View>
         <Text style={styles.instructions}>
-          subscribe (js) -> set state (js) -> print result (js)
+          {'Enter text in the input to change "input" field in state'}
         </Text>
+        <View style={styles.box}>
+          <Text style={styles.label}>
+            Value from native:
+          </Text>
+          <Text style={styles.value} testID={'valueFromNative'}
+              accessible
+              accessibilityLabel={'valueFromNative'}>
+            {this.state.uuid || 'empty value'}
+          </Text>
+          <Text style={styles.instructions}>
+            {'set state (native) -> print result (js)'}
+          </Text>
+        </View>
+
         <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
+          {'The "uuid" field changes in the native code by timer'}
         </Text>
       </View>
     )
@@ -113,14 +106,23 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
+  box: {
+    backgroundColor: 'white',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#333333',
+    padding: 10,
+    margin: 20,
+  },
   label: {
+    fontSize: 16,
     textAlign: 'center',
-    color: '#333333',
     margin: 5,
   },
   value: {
     fontSize: 15,
     textAlign: 'center',
+    color: '#333333',
     margin: 5,
   },
   instructions: {
@@ -129,15 +131,13 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   inputContainer: {
-    // justifyContent: 'center',
-    // display: 'flex',
-    // height: 30,
     flexDirection: 'row',
   },
   input: {
     height: 26,
     borderWidth: 0.5,
     borderColor: '#0f0f0f',
+    borderRadius: 5,
     flex: 1,
     fontSize: 13,
     padding: 5,
