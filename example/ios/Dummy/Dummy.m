@@ -7,18 +7,18 @@
 //
 
 #import "Dummy.h"
-#import "TPSStorage.h"
+#import "TPSStore.h"
 
 @implementation Dummy
 {
-  TPSStorage *storage;
+  TPSStore *storage;
 }
 
 - (id)init
 {
   self = [super init];
   if (self != nil) {
-    storage = [TPSStorage sharedInstance];
+    storage = [TPSStore sharedInstance];
     [self startTest];
   }
   return self;
@@ -38,7 +38,7 @@
 
   [nextState setValue:[[NSUUID UUID] UUIDString] forKey:@"uuid"];
 
-  [[TPSStorage sharedInstance] setState:nextState];
+  [[TPSStore sharedInstance] setState:nextState];
 }
 
 @end

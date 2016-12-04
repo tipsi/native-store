@@ -6,13 +6,12 @@
 //  Copyright © 2016 Facebook. All rights reserved.
 //
 
-#import "TPSStorageManager.h"
-#import "TPSStorage.h"
-#import "RCTLog.h"
+#import "TPSStoreManager.h"
+#import "TPSStore.h"
 
-@implementation TPSStorageManager
+@implementation TPSStoreManager
 {
-    TPSStorage *storage;
+    TPSStore *storage;
 }
 
 RCT_EXPORT_MODULE();
@@ -21,7 +20,7 @@ RCT_EXPORT_MODULE();
 {
     self = [super init];
     if (self != nil) {
-        storage = [TPSStorage sharedInstance];
+        storage = [TPSStore sharedInstance];
         // Subscribe on store updates
         [storage subscribe:^(NSDictionary* state) {
             [self sendEventWithName:@"state:change" body:state];

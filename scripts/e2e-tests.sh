@@ -15,7 +15,7 @@ isIOS() {
 # Go to example project
 cd example
 # Remove module dependency
-rm -rf node_modules/native-module
+rm -rf node_modules/native-store
 
 ###################
 # INSTALL         #
@@ -54,7 +54,6 @@ isIOS && npm run build:ios
 # Run Android e2e tests
 # npm run test:android
 # Run iOS e2e tests
-# isIOS && npm run test:ios || exit $?
 if isIOS
   then npm run test:ios
 fi

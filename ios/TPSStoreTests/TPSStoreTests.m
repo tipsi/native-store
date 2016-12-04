@@ -1,39 +1,39 @@
 //
-//  TPSStorageTests.m
-//  TPSStorageTests
+//  TPSStoreTests.m
+//  TPSStoreTests
 //
 //  Created by Anton Petrov on 30.11.16.
 //  Copyright © 2016 Tipsi. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
-#import "TPSStorage.h"
+#import "TPSStore.h"
 
-@interface TPSStorageTests : XCTestCase
+@interface TPSStoreTests : XCTestCase
 {
-    TPSStorage *storage;
+    TPSStore *store;
 }
 
 @end
 
-@implementation TPSStorageTests
+@implementation TPSStoreTests
 
 - (void)setUp {
     [super setUp];
-    storage = [TPSStorage new];
+    store = [TPSStore new];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
-    storage = nil;
+    store = nil;
     [super tearDown];
 }
 
 - (void) testInitialState
 {
-    NSDictionary *currentState = [storage getState];
-
+    NSDictionary *currentState = [store getState];
+    
     XCTAssertTrue(
         [[currentState allKeys] count] == 0,
         @"Initial state is empty"
@@ -43,9 +43,9 @@
 - (void) testUpdateState
 {
     NSDictionary *nextState = @{ @"test": @(1) };
-    [storage setState:nextState];
-    NSDictionary *currentState = [storage getState];
-
+    [store setState:nextState];
+    NSDictionary *currentState = [store getState];
+    
     XCTAssertEqualObjects(
         currentState,
         nextState,
@@ -53,15 +53,15 @@
         currentState,
         nextState
     );
-
+    
 }
 
 - (void) testSubscription
 {
     NSDictionary *nextState = @{ @"test": @(1) };
     XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async Method Works!"];
-
-    [storage subscribe:^(NSDictionary *currentState) {
+    
+    [store subscribe:^(NSDictionary *currentState) {
         XCTAssertEqualObjects(
             currentState,
             nextState,
@@ -71,9 +71,9 @@
         );
         [expectation fulfill];
     }];
-
-    [storage setState:nextState];
-
+    
+    [store setState:nextState];
+    
     [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
         if(error)
         {

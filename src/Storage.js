@@ -1,11 +1,11 @@
 import { NativeModules, NativeEventEmitter } from 'react-native'
 
-const { TPSStorageManager } = NativeModules
-const TPSStorageEmitter = new NativeEventEmitter(TPSStorageManager)
+const { TPSStoreManager } = NativeModules
+const TPSStoreEmitter = new NativeEventEmitter(TPSStoreManager)
 
 if (__DEV__) {
   // Fix warning about empty listeners in DEV
-  TPSStorageEmitter.addListener(
+  TPSStoreEmitter.addListener(
     'state:change',
     () => {}
   )
@@ -25,15 +25,15 @@ function validateState(state) {
 class Storage {
   setState = (state) => {
     validateState(state)
-    return TPSStorageManager.setState(state)
+    return TPSStoreManager.setState(state)
   }
 
   getState = () => (
-    TPSStorageManager.getState()
+    TPSStoreManager.getState()
   )
 
   subscribe = (listener) => {
-    const result = TPSStorageEmitter.addListener(
+    const result = TPSStoreEmitter.addListener(
       'state:change',
       listener
     )

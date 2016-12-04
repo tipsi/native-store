@@ -16,10 +16,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3ADC018F1DEF2FC90055D904"
-               BuildableName = "TPSStorageTests.xctest"
-               BlueprintName = "TPSStorageTests"
-               ReferencedContainer = "container:TPSStorage.xcodeproj">
+               BlueprintIdentifier = "3AD180DE1DF43F020093B005"
+               BuildableName = "TPSStoreTests.xctest"
+               BlueprintName = "TPSStoreTests"
+               ReferencedContainer = "container:TPSStore.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

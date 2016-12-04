@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3A70DCD91DEC7FC9003C6566"
-               BuildableName = "libTPSStorage.a"
-               BlueprintName = "TPSStorage"
-               ReferencedContainer = "container:TPSStorage.xcodeproj">
+               BlueprintIdentifier = "3AD180C81DF43BED0093B005"
+               BuildableName = "libTPSStore.a"
+               BlueprintName = "TPSStore"
+               ReferencedContainer = "container:TPSStore.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,20 +32,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3ADC018F1DEF2FC90055D904"
-               BuildableName = "TPSStorageTests.xctest"
-               BlueprintName = "TPSStorageTests"
-               ReferencedContainer = "container:TPSStorage.xcodeproj">
+               BlueprintIdentifier = "3AD180DE1DF43F020093B005"
+               BuildableName = "TPSStoreTests.xctest"
+               BlueprintName = "TPSStoreTests"
+               ReferencedContainer = "container:TPSStore.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A70DCD91DEC7FC9003C6566"
-            BuildableName = "libTPSStorage.a"
-            BlueprintName = "TPSStorage"
-            ReferencedContainer = "container:TPSStorage.xcodeproj">
+            BlueprintIdentifier = "3AD180C81DF43BED0093B005"
+            BuildableName = "libTPSStore.a"
+            BlueprintName = "TPSStore"
+            ReferencedContainer = "container:TPSStore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -64,10 +64,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A70DCD91DEC7FC9003C6566"
-            BuildableName = "libTPSStorage.a"
-            BlueprintName = "TPSStorage"
-            ReferencedContainer = "container:TPSStorage.xcodeproj">
+            BlueprintIdentifier = "3AD180C81DF43BED0093B005"
+            BuildableName = "libTPSStore.a"
+            BlueprintName = "TPSStore"
+            ReferencedContainer = "container:TPSStore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -82,10 +82,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A70DCD91DEC7FC9003C6566"
-            BuildableName = "libTPSStorage.a"
-            BlueprintName = "TPSStorage"
-            ReferencedContainer = "container:TPSStorage.xcodeproj">
+            BlueprintIdentifier = "3AD180C81DF43BED0093B005"
+            BuildableName = "libTPSStore.a"
+            BlueprintName = "TPSStore"
+            ReferencedContainer = "container:TPSStore.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

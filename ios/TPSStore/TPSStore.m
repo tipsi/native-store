@@ -6,9 +6,9 @@
 //  Copyright © 2016 Facebook. All rights reserved.
 //
 
-#import "TPSStorage.h"
+#import "TPSStore.h"
 
-@implementation TPSStorage
+@implementation TPSStore
 {
     EventEmitter *emitter;
     NSDictionary *state;
@@ -16,7 +16,7 @@
 
 + (instancetype)sharedInstance
 {
-    static TPSStorage *sharedInstance = nil;
+    static TPSStore *sharedInstance = nil;
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{

@@ -22,9 +22,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		25FE4ED09FA640A59B64C723 /* libTPSStore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD9564E7A950446F959F5FAC /* libTPSStore.a */; };
 		3A70DD851DEC8A5E003C6566 /* Dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A70DD831DEC8A5E003C6566 /* Dummy.m */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		EA2EA88FF9BD46E287D9E7F8 /* libTPSStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5CAF37059B4B4C8265B2EF /* libTPSStorage.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,12 +140,19 @@
 			remoteGlobalIDString = 2D2A28131D9B038B00D4039D;
 			remoteInfo = "React-tvOS";
 		};
-		3A70DDA41DEC8B3B003C6566 /* PBXContainerItemProxy */ = {
+		3AD181251DF440290093B005 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D295198B29314C6AA986624E /* TPSStorage.xcodeproj */;
+			containerPortal = 19210747F4564DFBBF8F8ED2 /* TPSStore.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 3A70DCDA1DEC7FCA003C6566;
-			remoteInfo = TPSStorage;
+			remoteGlobalIDString = 3AD180C91DF43BED0093B005;
+			remoteInfo = TPSStore;
+		};
+		3AD181271DF440290093B005 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 19210747F4564DFBBF8F8ED2 /* TPSStore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3AD180DF1DF43F020093B005;
+			remoteInfo = TPSStoreTests;
 		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -183,12 +190,12 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = example/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = example/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		19210747F4564DFBBF8F8ED2 /* TPSStore.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = TPSStore.xcodeproj; path = "../node_modules/native-store/ios/TPSStore.xcodeproj"; sourceTree = "<group>"; };
 		3A70DD831DEC8A5E003C6566 /* Dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dummy.m; path = Dummy/Dummy.m; sourceTree = "<group>"; };
 		3A70DD841DEC8A5E003C6566 /* Dummy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dummy.h; path = Dummy/Dummy.h; sourceTree = "<group>"; };
-		5C5CAF37059B4B4C8265B2EF /* libTPSStorage.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libTPSStorage.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		D295198B29314C6AA986624E /* TPSStorage.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = TPSStorage.xcodeproj; path = "../node_modules/native-store/ios/TPSStorage.xcodeproj"; sourceTree = "<group>"; };
+		AD9564E7A950446F959F5FAC /* libTPSStore.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libTPSStore.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,7 +221,7 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				EA2EA88FF9BD46E287D9E7F8 /* libTPSStorage.a in Frameworks */,
+				25FE4ED09FA640A59B64C723 /* libTPSStore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,10 +337,11 @@
 			name = Dummy;
 			sourceTree = "<group>";
 		};
-		3A70DD901DEC8B3B003C6566 /* Products */ = {
+		3AD181101DF440290093B005 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A70DDA51DEC8B3B003C6566 /* libTPSStorage.a */,
+				3AD181261DF440290093B005 /* libTPSStore.a */,
+				3AD181281DF440290093B005 /* TPSStoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -360,7 +368,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				D295198B29314C6AA986624E /* TPSStorage.xcodeproj */,
+				19210747F4564DFBBF8F8ED2 /* TPSStore.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -503,8 +511,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 3A70DD901DEC8B3B003C6566 /* Products */;
-					ProjectRef = D295198B29314C6AA986624E /* TPSStorage.xcodeproj */;
+					ProductGroup = 3AD181101DF440290093B005 /* Products */;
+					ProjectRef = 19210747F4564DFBBF8F8ED2 /* TPSStore.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -621,11 +629,18 @@
 			remoteRef = 3A70DD811DEC8A38003C6566 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3A70DDA51DEC8B3B003C6566 /* libTPSStorage.a */ = {
+		3AD181261DF440290093B005 /* libTPSStore.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libTPSStorage.a;
-			remoteRef = 3A70DDA41DEC8B3B003C6566 /* PBXContainerItemProxy */;
+			path = libTPSStore.a;
+			remoteRef = 3AD181251DF440290093B005 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3AD181281DF440290093B005 /* TPSStoreTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = TPSStoreTests.xctest;
+			remoteRef = 3AD181271DF440290093B005 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
@@ -736,6 +751,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/example.app/example";
@@ -752,6 +768,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -770,6 +787,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/native-store/ios/TPSStorage",
+					"$(SRCROOT)/../node_modules/native-store/ios/**",
 				);
 				INFOPLIST_FILE = example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -793,6 +811,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/native-store/ios/TPSStorage",
+					"$(SRCROOT)/../node_modules/native-store/ios/**",
 				);
 				INFOPLIST_FILE = example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -845,6 +864,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/native-store/ios/TPSStorage",
+					"$(SRCROOT)/../node_modules/native-store/ios/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -886,6 +906,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../node_modules/react-native/React/**",
 					"$(SRCROOT)/../node_modules/native-store/ios/TPSStorage",
+					"$(SRCROOT)/../node_modules/native-store/ios/**",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
