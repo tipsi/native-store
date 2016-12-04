@@ -39,4 +39,5 @@ test('Test store updates', async (t) => {
 
     throw error
   }
+
 })
