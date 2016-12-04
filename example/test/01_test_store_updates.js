@@ -11,7 +11,7 @@ test('Test store updates', async (t) => {
   const testInputValue = 'test_string'
 
   try {
-    await driver.waitForVisible(textInputId, 15000)
+    await driver.waitForVisible(textInputId, 30000)
     t.pass('User should see text input')
 
     await driver.setValue(textInputId, testInputValue)
