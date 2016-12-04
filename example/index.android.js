@@ -1,10 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-
 import React, { Component } from 'react'
 import {
   AppRegistry,
@@ -52,9 +45,10 @@ export default class example extends Component {
           <Text style={styles.label}>
             Value from input:
           </Text>
-          <Text style={styles.value} testID={'valueFromInput'}
-              accessible
-              accessibilityLabel={'valueFromInput'}>
+          <Text
+            accessible
+            accessibilityLabel={'valueFromInput'}
+            style={styles.value}>
             {this.state.input || 'empty value'}
           </Text>
           <View style={styles.inputContainer}>
@@ -62,6 +56,7 @@ export default class example extends Component {
               accessible
               accessibilityLabel={'textInput'}
               style={styles.input}
+              underlineColorAndroid="rgba(0,0,0,0)"
               onChangeText={this.handleChangeTextInState}
             />
           </View>
@@ -76,9 +71,10 @@ export default class example extends Component {
           <Text style={styles.label}>
             Value from native:
           </Text>
-          <Text style={styles.value} testID={'valueFromNative'}
-              accessible
-              accessibilityLabel={'valueFromNative'}>
+          <Text
+            accessible
+            accessibilityLabel={'valueFromNative'}
+            style={styles.value}>
             {this.state.uuid || 'empty value'}
           </Text>
           <Text style={styles.instructions}>
@@ -146,5 +142,3 @@ const styles = StyleSheet.create({
 })
 
 AppRegistry.registerComponent('example', () => example)
-
-
