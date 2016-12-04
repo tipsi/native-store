@@ -27,7 +27,7 @@ public class GeneratorRandomString extends AsyncTask<Void, String, Void> {
         while (needString) {
             publishProgress(getRandomString(S_LENGTH));
             try {
-                Thread.sleep(3000);
+                Thread.sleep(2000);
             } catch (InterruptedException ignored) {
             }
         }
