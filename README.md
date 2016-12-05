@@ -1,6 +1,6 @@
 # native-store
 
-(https://travis-ci.org/tipsi/native-store)
+[![build status](https://img.shields.io/travis/tipsi/native-store/master.svg?style=flat-square)](https://travis-ci.org/tipsi/native-store)
 
 Native store for react-native
 
