@@ -9,5 +9,5 @@ import java.util.Map;
  */
 
 public interface Observer {
-    void update(HybridMap soreState);
+    void update(HybridMap storeState);
 }

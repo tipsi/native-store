@@ -17,8 +17,8 @@ public class NativeObserverStub implements Observer {
 
 
     @Override
-    public void update(HybridMap soreState) {
-        currentStateMap = soreState.getNativeMap();
+    public void update(HybridMap storeState) {
+        currentStateMap = storeState.getNativeMap();
         updateCounter++;
     }
 

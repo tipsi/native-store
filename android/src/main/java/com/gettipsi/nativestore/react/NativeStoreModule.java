@@ -34,7 +34,7 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Lif
     @ReactMethod
     public void setState(final ReadableMap value) {
         Log.d(TAG, "setState: " + value.getClass());
-        registerReactObserver();
+        subscribeReactObserver();
         NativeStore.getInstance().setState(value);
     }
 
@@ -49,17 +49,17 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Lif
         }
     }
 
-    private void registerReactObserver(){
+    private void subscribeReactObserver(){
         if(reactObserver == null){
             reactObserver = new ReactObserver(reactContext);
-            NativeStore.getInstance().registerObserver(reactObserver);
+            NativeStore.getInstance().subscribe(reactObserver);
         }
     }
 
     @Override
     public void onHostResume() {
         Log.d(TAG, "onHostResume: ");
-        registerReactObserver();
+        subscribeReactObserver();
     }
 
     @Override

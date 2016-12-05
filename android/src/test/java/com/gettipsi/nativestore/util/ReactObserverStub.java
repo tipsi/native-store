@@ -24,8 +24,8 @@ public class ReactObserverStub implements Observer {
 
 
     @Override
-    public void update(HybridMap soreState) {
-        sendEvent(JSObserverName, soreState.getWritableMap());
+    public void update(HybridMap storeState) {
+        sendEvent(JSObserverName, storeState.getWritableMap());
     }
 
     private void sendEvent(String eventName, @Nullable WritableMap params) {

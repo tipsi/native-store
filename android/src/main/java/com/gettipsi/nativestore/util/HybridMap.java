@@ -73,8 +73,4 @@ public class HybridMap {
         }
         return writableArray;
     }
-
-    public void updateItem(HashMap<String, Object> value) {
-        sourceHashMap.putAll(value);
-    }
 }

@@ -23,8 +23,8 @@ public class ReactObserver implements Observer {
 
 
     @Override
-    public void update(HybridMap soreState) {
-        sendEvent(reactContext, JS_OBSERVER_NAME, soreState.getWritableMap());
+    public void update(HybridMap storeState) {
+        sendEvent(reactContext, JS_OBSERVER_NAME, storeState.getWritableMap());
     }
 
     private void sendEvent(ReactContext reactContext,

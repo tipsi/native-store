@@ -128,18 +128,18 @@ public class NativeStoreUnitTest {
 
     private ReactObserverStub subscribeReact(final String observerName) {
         final ReactObserverStub observerStub = new ReactObserverStub(observerName);
-        nativeStore.registerObserver(observerStub);
+        nativeStore.subscribe(observerStub);
         return observerStub;
     }
 
     private NativeObserverStub subscribeNative() {
         final NativeObserverStub observerStub = new NativeObserverStub();
-        nativeStore.registerObserver(observerStub);
+        nativeStore.subscribe(observerStub);
         return observerStub;
     }
 
     private void unsubscribe(final Observer observer) {
-        nativeStore.removeObserver(observer);
+        nativeStore.unsubscribe(observer);
     }
 
     private void changeStoreStateThreeTimes() {

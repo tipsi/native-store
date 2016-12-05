@@ -32,12 +32,12 @@ public class NativeStore implements Observable {
     }
 
     @Override
-    public void registerObserver(Observer o) {
+    public void subscribe(Observer o) {
         observers.add(o);
     }
 
     @Override
-    public void removeObserver(Observer o) {
+    public void unsubscribe(Observer o) {
         observers.remove(o);
     }
 
@@ -48,10 +48,7 @@ public class NativeStore implements Observable {
     }
 
     public synchronized void setState(final HashMap<String, Object> value) {
-        if (state == null)
-            state = new HybridMap(value);
-        else
-            state.updateItem(value);
+        state = new HybridMap(value);
         notifyObservers();
     }
 

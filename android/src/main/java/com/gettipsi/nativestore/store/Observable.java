@@ -5,7 +5,7 @@ package com.gettipsi.nativestore.store;
  */
 
 public interface Observable {
-    void registerObserver(Observer o);
-    void removeObserver(Observer o);
+    void subscribe(Observer o);
+    void unsubscribe(Observer o);
     void notifyObservers();
 }
