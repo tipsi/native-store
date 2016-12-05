@@ -1,4 +1,7 @@
 # native-store
+
+(https://travis-ci.org/tipsi/native-store)
+
 Native store for react-native
 
 ## Requirements
