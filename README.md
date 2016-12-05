@@ -47,7 +47,7 @@ Run `react-native link native-store` so your project is linked against your Andr
 
 #### Manual
 
-In your `android/app/build.gradle` add:
+In your `app build.gradle` add:
 
 ```gradle
 ...
@@ -57,7 +57,7 @@ dependencies {
 }
 ```
 
-In your `android/settings.gradle` add:
+In your `settings.gradle` add:
 
 ```gradle
 ...
