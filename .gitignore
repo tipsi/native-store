@@ -63,10 +63,6 @@ captures/
 # Keystore files
 #
 *.jks
-android/gradlew
-android/gradlew.bat
-android/gradle/wrapper/gradle-wrapper.jar
-android/gradle/wrapper/gradle-wrapper.properties
 
 # node.js
 #
