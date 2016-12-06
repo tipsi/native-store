@@ -1,0 +1,397 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3AD180CE1DF43BED0093B005 /* TPSStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180CD1DF43BED0093B005 /* TPSStore.m */; };
+		3AD180CF1DF43BED0093B005 /* TPSStore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3AD180CC1DF43BED0093B005 /* TPSStore.h */; };
+		3AD180D71DF43C350093B005 /* EventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180D61DF43C350093B005 /* EventEmitter.m */; };
+		3AD180DA1DF43C6C0093B005 /* TPSStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180D91DF43C6C0093B005 /* TPSStoreManager.m */; };
+		3AD180E21DF43F020093B005 /* TPSStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180E11DF43F020093B005 /* TPSStoreTests.m */; };
+		3AD180E41DF43F020093B005 /* libTPSStore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD180C91DF43BED0093B005 /* libTPSStore.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3AD180E51DF43F020093B005 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AD180C11DF43BED0093B005 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AD180C81DF43BED0093B005;
+			remoteInfo = TPSStore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3AD180C71DF43BED0093B005 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				3AD180CF1DF43BED0093B005 /* TPSStore.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3AD180C91DF43BED0093B005 /* libTPSStore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTPSStore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AD180CC1DF43BED0093B005 /* TPSStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TPSStore.h; sourceTree = "<group>"; };
+		3AD180CD1DF43BED0093B005 /* TPSStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPSStore.m; sourceTree = "<group>"; };
+		3AD180D51DF43C350093B005 /* EventEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventEmitter.h; sourceTree = "<group>"; };
+		3AD180D61DF43C350093B005 /* EventEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventEmitter.m; sourceTree = "<group>"; };
+		3AD180D81DF43C6C0093B005 /* TPSStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPSStoreManager.h; sourceTree = "<group>"; };
+		3AD180D91DF43C6C0093B005 /* TPSStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPSStoreManager.m; sourceTree = "<group>"; };
+		3AD180DF1DF43F020093B005 /* TPSStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TPSStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AD180E11DF43F020093B005 /* TPSStoreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPSStoreTests.m; sourceTree = "<group>"; };
+		3AD180E31DF43F020093B005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3AD180C61DF43BED0093B005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AD180DC1DF43F020093B005 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AD180E41DF43F020093B005 /* libTPSStore.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3AD180C01DF43BED0093B005 = {
+			isa = PBXGroup;
+			children = (
+				3AD180CB1DF43BED0093B005 /* TPSStore */,
+				3AD180E01DF43F020093B005 /* TPSStoreTests */,
+				3AD180CA1DF43BED0093B005 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3AD180CA1DF43BED0093B005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3AD180C91DF43BED0093B005 /* libTPSStore.a */,
+				3AD180DF1DF43F020093B005 /* TPSStoreTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3AD180CB1DF43BED0093B005 /* TPSStore */ = {
+			isa = PBXGroup;
+			children = (
+				3AD180CC1DF43BED0093B005 /* TPSStore.h */,
+				3AD180CD1DF43BED0093B005 /* TPSStore.m */,
+				3AD180D51DF43C350093B005 /* EventEmitter.h */,
+				3AD180D61DF43C350093B005 /* EventEmitter.m */,
+				3AD180D81DF43C6C0093B005 /* TPSStoreManager.h */,
+				3AD180D91DF43C6C0093B005 /* TPSStoreManager.m */,
+			);
+			path = TPSStore;
+			sourceTree = "<group>";
+		};
+		3AD180E01DF43F020093B005 /* TPSStoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				3AD180E11DF43F020093B005 /* TPSStoreTests.m */,
+				3AD180E31DF43F020093B005 /* Info.plist */,
+			);
+			path = TPSStoreTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3AD180C81DF43BED0093B005 /* TPSStore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AD180D21DF43BED0093B005 /* Build configuration list for PBXNativeTarget "TPSStore" */;
+			buildPhases = (
+				3AD180C51DF43BED0093B005 /* Sources */,
+				3AD180C61DF43BED0093B005 /* Frameworks */,
+				3AD180C71DF43BED0093B005 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TPSStore;
+			productName = TPSStore;
+			productReference = 3AD180C91DF43BED0093B005 /* libTPSStore.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3AD180DE1DF43F020093B005 /* TPSStoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AD180E91DF43F020093B005 /* Build configuration list for PBXNativeTarget "TPSStoreTests" */;
+			buildPhases = (
+				3AD180DB1DF43F020093B005 /* Sources */,
+				3AD180DC1DF43F020093B005 /* Frameworks */,
+				3AD180DD1DF43F020093B005 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3AD180E61DF43F020093B005 /* PBXTargetDependency */,
+			);
+			name = TPSStoreTests;
+			productName = TPSStoreTests;
+			productReference = 3AD180DF1DF43F020093B005 /* TPSStoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3AD180C11DF43BED0093B005 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Tipsi;
+				TargetAttributes = {
+					3AD180C81DF43BED0093B005 = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+					};
+					3AD180DE1DF43F020093B005 = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 3AD180C41DF43BED0093B005 /* Build configuration list for PBXProject "TPSStore" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3AD180C01DF43BED0093B005;
+			productRefGroup = 3AD180CA1DF43BED0093B005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3AD180C81DF43BED0093B005 /* TPSStore */,
+				3AD180DE1DF43F020093B005 /* TPSStoreTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3AD180DD1DF43F020093B005 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3AD180C51DF43BED0093B005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AD180CE1DF43BED0093B005 /* TPSStore.m in Sources */,
+				3AD180D71DF43C350093B005 /* EventEmitter.m in Sources */,
+				3AD180DA1DF43C6C0093B005 /* TPSStoreManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AD180DB1DF43F020093B005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AD180E21DF43F020093B005 /* TPSStoreTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3AD180E61DF43F020093B005 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3AD180C81DF43BED0093B005 /* TPSStore */;
+			targetProxy = 3AD180E51DF43F020093B005 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		3AD180D01DF43BED0093B005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+					"${SRCROOT}/../../../ios/Pods/Headers/Public/**",
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+				);
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3AD180D11DF43BED0093B005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+					"${SRCROOT}/../../../ios/Pods/Headers/Public/**",
+					"$(SRCROOT)/../node_modules/react-native/React/**",
+				);
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3AD180D31DF43BED0093B005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3AD180D41DF43BED0093B005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3AD180E71DF43F020093B005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TPSStoreTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tipsi.TPSStoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3AD180E81DF43F020093B005 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = TPSStoreTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = tipsi.TPSStoreTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3AD180C41DF43BED0093B005 /* Build configuration list for PBXProject "TPSStore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AD180D01DF43BED0093B005 /* Debug */,
+				3AD180D11DF43BED0093B005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AD180D21DF43BED0093B005 /* Build configuration list for PBXNativeTarget "TPSStore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AD180D31DF43BED0093B005 /* Debug */,
+				3AD180D41DF43BED0093B005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AD180E91DF43F020093B005 /* Build configuration list for PBXNativeTarget "TPSStoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AD180E71DF43F020093B005 /* Debug */,
+				3AD180E81DF43F020093B005 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3AD180C11DF43BED0093B005 /* Project object */;
+}
