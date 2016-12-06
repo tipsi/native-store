@@ -139,6 +139,6 @@ brew install carthage
 
 To see more of the `native-store` in action, you can check out the source in [example](https://github.com/tipsi/native-store/tree/master/example) folder.
 
-## License
+##  License
 
 native-store is available under the MIT license. See the [LICENSE](https://github.com/tipsi/native-store/tree/master/LICENSE) file for more info.
