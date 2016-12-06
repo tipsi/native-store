@@ -1,11 +1,11 @@
 package com.example.dummy;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.gettipsi.nativestore.store.NativeStore;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -51,6 +51,10 @@ public class GeneratorRandomString extends AsyncTask<Void, String, Void> {
     //Emulate changes store state from native
     private void changeStateFromNative(String s) {
         final HashMap<String, Object> map = new HashMap<>();
+        if (NativeStore.getInstance().getState() != null) {
+            final Map<String, Object> state = NativeStore.getInstance().getState().getNativeMap();
+            map.putAll(state);
+        }
         map.put("uuid", s);
         NativeStore.getInstance().setState(map);
     }
