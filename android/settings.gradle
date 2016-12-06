@@ -1,4 +1,3 @@
 rootProject.name = 'native-store'
 
 include ':android'
-include ':example'
