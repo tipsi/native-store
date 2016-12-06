@@ -4,6 +4,7 @@ import helper from './utils/helper'
 const { driver, idFromAccessId, platform } = helper
 
 test('Test store updates', async (t) => {
+
   const textInputId = idFromAccessId('textInput')
   const valueFromInputId = idFromAccessId('valueFromInput')
   const valueFromNativeId = idFromAccessId('valueFromNative')
