@@ -9,8 +9,7 @@ Native store for react-native
 ### iOS
 
 * Xcode 8+
-* iOS 10+
-* [CocoaPods](https://cocoapods.org) 1.1.1+
+* iOS 9+
 
 ### Android
 
@@ -28,17 +27,16 @@ Run `react-native link native-store` so your project is linked against your Xcod
 
 #### CocoaPods
 
-1. Setup your `Podfile` like the included [example/ios/Podfile](example/ios/Podfile) then run `pod install`.
-2. Open your project in Xcode workspace.
-3. Drag the following folder into your project:
-  * `node_modules/native-store/ios/TPSStorage/`
+1. Open your project in Xcode workspace.
+2. Drag the following folder into your project:
+  * `node_modules/native-store/ios/TPSStore/`
 
 #### Manual
 
 1. Open your project in Xcode, right click on Libraries and click `Add Files to "Your Project Name"`.
-2. Look under `node_modules/native-store/ios` and add `TPSStorage.xcodeproj`.
-3. Add `libTPSStorage.a` to `Build Phases` -> `Link Binary With Libraries`.
-4. Click on `TPSStorage.xcodeproj` in Libraries and go the Build Settings tab. Double click the text to the right of `Header Search Paths` and verify that it has `$(SRCROOT)/../../react-native/React` as well as `${SRCROOT}/../../../ios/Pods/Headers/Public` - if they aren't, then add them. This is so Xcode is able to find the headers that the `TPSStorage` source files are referring to by pointing to the header files installed within the `react-native` `node_modules` directory.
+2. Look under `node_modules/native-store/ios` and add `TPSStore.xcodeproj`.
+3. Add `libTPSStore.a` to `Build Phases` -> `Link Binary With Libraries`.
+4. Click on `TPSStore.xcodeproj` in Libraries and go the Build Settings tab. Double click the text to the right of `Header Search Paths` and verify that it has `$(SRCROOT)/../../react-native/React` - if they aren't, then add them. This is so Xcode is able to find the headers that the `TPSStore` source files are referring to by pointing to the header files installed within the `react-native` `node_modules` directory.
 5. Whenever you want to use it within React code now you can:
   * `import Storage from 'native-store'`
 
@@ -111,14 +109,13 @@ To run `native-store` unit tests and `example` app e2e tests for all platforms y
 #### Manual
 
 1. Go to example folder `cd example`
-2. Install CocoaPods dependencies (iOS only) `pod install --project-directory=ios`
-3. Install npm dependencies `npm install`
-4. Build project:
+2. Install npm dependencies `npm install`
+3. Build project:
   * `npm run build:ios` - for iOS
   * `npm run build:android` - for Android
   * `npm run build` - for both iOS and Android
-5. Open Appium in other tab `npm run appium`
-6. Run tests:
+4. Open Appium in other tab `npm run appium`
+5. Run tests:
   * `npm run test:ios` - for iOS
   * `npm run test:android` - for Android
   * `npm run test` - for both iOS and Android
