@@ -33,7 +33,7 @@ npm install
 ###################
 
 # Run Android e2e tests
-# npm run test:android
+npm run test:android
 # Run iOS e2e tests
 if isIOS
   then npm run test:ios

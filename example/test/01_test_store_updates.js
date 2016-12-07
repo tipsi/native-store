@@ -11,11 +11,13 @@ test('Test store updates', async (t) => {
   const testInputValue = 'test_string'
 
   try {
-    await driver.waitForVisible(textInputId, 10000)
+    await driver.waitForVisible(textInputId, 30000)
     t.pass('User should see text input')
 
     await driver.setValue(textInputId, testInputValue)
+
     await helper.hideKeyboard()
+
     t.pass('User should be able to enter text in input')
 
     const inputValueResult = await driver.getText(valueFromInputId)
