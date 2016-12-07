@@ -1,10 +1,9 @@
 import test from 'tape-async'
 import helper from './utils/helper'
 
-const { driver, idFromAccessId, platform } = helper
+const { driver, idFromAccessId } = helper
 
 test('Test store updates', async (t) => {
-
   const textInputId = idFromAccessId('textInput')
   const valueFromInputId = idFromAccessId('valueFromInput')
   const valueFromNativeId = idFromAccessId('valueFromNative')
@@ -17,11 +16,7 @@ test('Test store updates', async (t) => {
 
     await driver.setValue(textInputId, testInputValue)
 
-    if (platform('android')) {
-      await driver.back()
-    } else {
-      await helper.hideKeyboard()
-    }
+    await helper.hideKeyboard()
 
     t.pass('User should be able to enter text in input')
 
