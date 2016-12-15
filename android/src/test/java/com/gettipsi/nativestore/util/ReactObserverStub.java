@@ -2,7 +2,6 @@ package com.gettipsi.nativestore.util;
 
 import android.support.annotation.Nullable;
 
-import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableMap;
 import com.gettipsi.nativestore.store.Observer;
 

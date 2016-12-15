@@ -2,7 +2,6 @@ package com.gettipsi.nativestore.util;
 
 import com.gettipsi.nativestore.store.Observer;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
