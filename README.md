@@ -1,5 +1,6 @@
 # native-store
 
+[![npm version](https://img.shields.io/npm/v/native-store.svg?style=flat-square)](https://www.npmjs.com/package/native-store)
 [![build status](https://img.shields.io/travis/tipsi/native-store/master.svg?style=flat-square)](https://travis-ci.org/tipsi/native-store)
 
 Native store for react-native
