@@ -17,12 +17,17 @@ fi
 proj_dir_old=example
 proj_dir_new=example_tmp
 
-react_native_version=$(cd $proj_dir_old && npm view react-native version)
+react_native_version=$(cat $proj_dir_old/package.json | sed -n 's/"react-native": "\(\^|~\)*\(.*\)",*/\2/p')
 library_name=$(node -p "require('./package.json').name")
 
 files_to_copy=(
   package.json
   index.{ios,android}.js
+  ios/Dummy
+  ios/example/AppDelegate.m
+  ios/example.xcodeproj/project.pbxproj
+  android/app/src/main/java/com/example/dummy
+  android/app/src/main/java/com/example/MainActivity.java
   android/app/build.gradle
   src
   scripts
@@ -49,6 +54,8 @@ if ($skip_new && ! $use_old); then
   # Go to new test project
   cd $proj_dir_new
 elif (! $skip_new && ! $use_old); then
+  # Remove react-native to avoid affecting react-native init
+  rm -rf node_modules/react-native
   echo "Creating new example project"
   # Remove old test project and tmp dir if exist
   rm -rf $proj_dir_new tmp
@@ -102,8 +109,6 @@ fi
 # BUILD           #
 ###################
 
-# Configure Stripe variables
-npm run configure
 # Build Android app
 npm run build:android
 # Build iOS app

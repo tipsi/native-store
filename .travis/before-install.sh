@@ -4,11 +4,16 @@ init_new_example_project() {
   proj_dir_old=example
   proj_dir_new=example_tmp
 
-  react_native_ver=$(cd $proj_dir_old && npm view react-native version)
+  react_native_version=$(cat $proj_dir_old/package.json | sed -n 's/"react-native": "\(\^|~\)*\(.*\)",*/\2/p')
 
   files_to_copy=(
     package.json
     index.{ios,android}.js
+    ios/Dummy
+    ios/example/AppDelegate.m
+    ios/example.xcodeproj/project.pbxproj
+    android/app/src/main/java/com/example/dummy
+    android/app/src/main/java/com/example/MainActivity.java
     android/app/build.gradle
     src
     scripts
@@ -17,7 +22,7 @@ init_new_example_project() {
 
   mkdir tmp
   cd tmp
-  react-native init $proj_dir_old --version $react_native_ver
+  react-native init $proj_dir_old --version $react_native_version
   cd ..
   mv tmp/$proj_dir_old $proj_dir_new
 
