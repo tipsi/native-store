@@ -37,8 +37,6 @@ isOSX() {
 # BEFORE INSTALL  #
 ###################
 
-# Check Stripe environment variables
-[ -z "$PUBLISHABLE_KEY" ] && echo "Need to set Stripe PUBLISHABLE_KEY" && exit 1;
 # Skip iOS step if current os is not OSX
 ! isOSX && echo "Current os is not OSX, setup for iOS will be skipped"
 # Install react-native-cli if not exist
