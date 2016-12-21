@@ -2,7 +2,7 @@
 
 set -e
 
-isIOS() {
+isMacOS() {
   [ "$(uname)" == "Darwin" ]
 }
 
@@ -10,8 +10,8 @@ isIOS() {
 # BEFORE INSTALL  #
 ###################
 
-# Check is OSX
-! isIOS && echo "Current os is not OSX, setup for iOS will be skipped"
+# Check is macOS
+! isMacOS && echo "Current os is not macOS, setup for iOS will be skipped"
 
 ###################
 # INSTALL         #
@@ -35,6 +35,6 @@ npm install
 # Run Android e2e tests
 npm run test:android
 # Run iOS e2e tests
-if isIOS
-  then npm run test:ios
+if isMacOS; then
+  npm run test:ios
 fi

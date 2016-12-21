@@ -68,3 +68,7 @@ captures/
 #
 node_modules/
 npm-debug.log
+
+
+example_tmp
+tmp
