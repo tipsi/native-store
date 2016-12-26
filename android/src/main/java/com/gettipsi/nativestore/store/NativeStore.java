@@ -66,8 +66,6 @@ public class NativeStore implements Observable {
   }
 
   public void setState(final ReadableMap value) {
-    state = new HybridMap((ReadableNativeMap) value);
-    notifyObservers();
     final Runnable task = new Runnable() {
       public void run() {
         Log.d(TAG, "run: start Thread");
