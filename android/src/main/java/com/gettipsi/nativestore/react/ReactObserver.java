@@ -14,24 +14,24 @@ import com.gettipsi.nativestore.util.HybridMap;
 
 public class ReactObserver implements Observer {
 
-    private static final String JS_OBSERVER_NAME = "storage:change";
-    private final ReactContext reactContext;
+  private static final String JS_OBSERVER_NAME = "storage:change";
+  private final ReactContext reactContext;
 
-    public ReactObserver(ReactContext reactContext) {
-        this.reactContext = reactContext;
-    }
+  public ReactObserver(ReactContext reactContext) {
+    this.reactContext = reactContext;
+  }
 
 
-    @Override
-    public void update(HybridMap storeState) {
-        sendEvent(reactContext, JS_OBSERVER_NAME, storeState.getWritableMap());
-    }
+  @Override
+  public void update(HybridMap storeState) {
+    sendEvent(reactContext, JS_OBSERVER_NAME, storeState.getWritableMapForReact());
+  }
 
-    private void sendEvent(ReactContext reactContext,
-                           String eventName,
-                           @Nullable WritableMap params) {
-        reactContext
-                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                .emit(eventName, params);
-    }
+  private void sendEvent(ReactContext reactContext,
+                         String eventName,
+                         @Nullable WritableMap params) {
+    reactContext
+      .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+      .emit(eventName, params);
+  }
 }

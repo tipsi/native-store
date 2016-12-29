@@ -34,23 +34,59 @@ public class HybridMap {
     this.sourceReadableMap = sourceReadableMap;
   }
 
+  public HybridMap(WritableNativeMap sourceWritableMap) {
+    this.sourceWritableMap = sourceWritableMap;
+  }
 
   public ReadableMap getReadableMap() {
-    return sourceReadableMap;
+    if (sourceReadableMap != null) {
+      return sourceReadableMap;
+    } else if (sourceWritableMap != null) {
+      return sourceWritableMap;
+    } else {
+      sourceWritableMap = (WritableNativeMap) constructWritableMap(sourceHashMap);
+      return sourceWritableMap;
+    }
   }
 
   public WritableMap getWritableMap() {
-//        return constructWritableMap(sourceHashMap);
-    if(sourceWritableMap == null){
-      Log.d(TAG, "getWritableMap: start");
+    Log.d(TAG, "getWritableMap: start");
+    if (sourceWritableMap != null) {
+      Log.d(TAG, "getWritableMap: end");
+      return sourceWritableMap;
+    } else if (sourceReadableMap != null) {
       sourceWritableMap = (WritableNativeMap) Arguments.createMap();
       sourceWritableMap.merge(sourceReadableMap);
-      Log.d(TAG, "getWritableMap: end");
+    } else {
+      sourceWritableMap = (WritableNativeMap) constructWritableMap(sourceHashMap);
     }
+    Log.d(TAG, "getWritableMap: end");
     return sourceWritableMap;
   }
 
+  public WritableMap getWritableMapForReact() {
+    Log.d(TAG, "getWritableMap: start");
+    final WritableMap copyMap = Arguments.createMap();
+    if (sourceWritableMap != null) {
+      copyMap.merge(sourceWritableMap);
+    } else if(sourceReadableMap != null){
+      copyMap.merge(sourceReadableMap);
+    } else {
+      sourceWritableMap = (WritableNativeMap) constructWritableMap(sourceHashMap);
+      copyMap.merge(sourceWritableMap);
+    }
+    Log.d(TAG, "getWritableMap: end");
+    return copyMap;
+  }
+
   public Map<String, Object> getNativeMap() {
+    if (sourceHashMap != null) {
+      return sourceHashMap;
+    } else if (sourceWritableMap != null) {
+      sourceHashMap = sourceWritableMap.toHashMap();
+    } else if (sourceReadableMap != null) {
+      sourceHashMap = sourceReadableMap.toHashMap();
+    }
     return sourceHashMap;
   }
 

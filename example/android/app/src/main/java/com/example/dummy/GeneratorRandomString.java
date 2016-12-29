@@ -2,10 +2,10 @@ package com.example.dummy;
 
 import android.os.AsyncTask;
 
+import com.facebook.react.bridge.Arguments;
+import com.facebook.react.bridge.WritableMap;
 import com.gettipsi.nativestore.store.NativeStore;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 /**
@@ -50,12 +50,13 @@ public class GeneratorRandomString extends AsyncTask<Void, String, Void> {
 
     //Emulate changes store state from native
     private void changeStateFromNative(String s) {
-        final HashMap<String, Object> map = new HashMap<>();
+        final WritableMap map;
         if (NativeStore.getInstance().getState() != null) {
-            final Map<String, Object> state = NativeStore.getInstance().getState().getNativeMap();
-            map.putAll(state);
+            map = NativeStore.getInstance().getState().getWritableMap();
+        } else {
+            map = Arguments.createMap();
         }
-        map.put("uuid", s);
+        map.putString("uuid", s);
         NativeStore.getInstance().setState(map);
     }
 
