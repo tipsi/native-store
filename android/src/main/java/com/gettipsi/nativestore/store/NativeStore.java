@@ -1,10 +1,11 @@
 package com.gettipsi.nativestore.store;
 
-import android.os.Process;
 import android.util.Log;
 
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableNativeMap;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.bridge.WritableNativeMap;
 import com.gettipsi.nativestore.util.HybridMap;
 
 import java.util.ArrayList;
@@ -12,7 +13,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.RejectedExecutionException;
-import java.util.concurrent.RunnableFuture;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
@@ -60,7 +60,7 @@ public class NativeStore implements Observable {
       observer.update(state);
   }
 
-  public synchronized void setState(final HashMap<String, Object> value) {
+  public void setState(final HashMap<String, Object> value) {
     state = new HybridMap(value);
     notifyObservers();
   }
@@ -74,7 +74,22 @@ public class NativeStore implements Observable {
         Log.d(TAG, "run: end Thread");
       }
     };
+    setState(task);
+  }
 
+  public void setState(final WritableMap value) {
+    final Runnable task = new Runnable() {
+      public void run() {
+        Log.d(TAG, "run: start Thread");
+        state = new HybridMap((WritableNativeMap) value);
+        notifyObservers();
+        Log.d(TAG, "run: end Thread");
+      }
+    };
+    setState(task);
+  }
+
+  private void setState(final Runnable task) {
     try {
       poolExecutor.execute(task);
     } catch (RejectedExecutionException e) {
@@ -85,19 +100,6 @@ public class NativeStore implements Observable {
         Log.e(TAG, "setState: ", e1);
       }
     }
-//    new Thread(new Runnable() {
-//      public void run() {
-//        Log.d(TAG, "run: start Thread");
-////        int tid= Process.myTid();
-////        Log.d(TAG,"priority before change = " + android.os.Process.getThreadPriority(tid));
-////        Log.d(TAG,"priority before change = "+Thread.currentThread().getPriority());
-////        android.os.Process.setThreadPriority(Process.THREAD_PRIORITY_LOWEST);
-////        Log.d(TAG,"priority after change = " + android.os.Process.getThreadPriority(tid));
-////        Log.d(TAG,"priority after change = " + Thread.currentThread().getPriority());
-//        setState(((ReadableNativeMap) value).toHashMap());
-//        Log.d(TAG, "run: end Thread");
-//      }
-//    }).start();
   }
 
   public HybridMap getState() {
