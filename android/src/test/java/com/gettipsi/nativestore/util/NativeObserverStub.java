@@ -10,22 +10,22 @@ import java.util.Map;
 
 public class NativeObserverStub implements Observer {
 
-    private Map<String, Object> currentStateMap;
-    private int updateCounter;
+  private Map<String, Object> currentStateMap;
+  private int updateCounter;
 
 
 
-    @Override
-    public void update(HybridMap storeState) {
-        currentStateMap = storeState.getNativeMap();
-        updateCounter++;
-    }
+  @Override
+  public void update(HybridMap storeState) {
+    currentStateMap = storeState.getNativeMap();
+    updateCounter++;
+  }
 
-    public int getUpdateCounter(){
-        return updateCounter;
-    }
+  public int getUpdateCounter(){
+    return updateCounter;
+  }
 
-    public Map<String, Object> getCurrentStateMap(){
-        return currentStateMap;
-    }
+  public Map<String, Object> getCurrentStateMap(){
+    return currentStateMap;
+  }
 }

@@ -1,7 +1,5 @@
 package com.gettipsi.nativestore.util;
 
-import android.util.Log;
-
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.ReadableNativeMap;
@@ -50,9 +48,7 @@ public class HybridMap {
   }
 
   public WritableMap getWritableMap() {
-    Log.d(TAG, "getWritableMap: start");
     if (sourceWritableMap != null) {
-      Log.d(TAG, "getWritableMap: end");
       return sourceWritableMap;
     } else if (sourceReadableMap != null) {
       sourceWritableMap = (WritableNativeMap) Arguments.createMap();
@@ -60,12 +56,10 @@ public class HybridMap {
     } else {
       sourceWritableMap = (WritableNativeMap) constructWritableMap(sourceHashMap);
     }
-    Log.d(TAG, "getWritableMap: end");
     return sourceWritableMap;
   }
 
   public WritableMap getWritableMapForReact() {
-    Log.d(TAG, "getWritableMap: start");
     final WritableMap copyMap = Arguments.createMap();
     if (sourceWritableMap != null) {
       copyMap.merge(sourceWritableMap);
@@ -75,7 +69,6 @@ public class HybridMap {
       sourceWritableMap = (WritableNativeMap) constructWritableMap(sourceHashMap);
       copyMap.merge(sourceWritableMap);
     }
-    Log.d(TAG, "getWritableMap: end");
     return copyMap;
   }
 

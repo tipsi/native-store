@@ -68,10 +68,8 @@ public class NativeStore implements Observable {
   public void setState(final HashMap<String, Object> value) {
     final Runnable task = new Runnable() {
       public void run() {
-        Log.d(TAG, "run: start Thread");
         state = new HybridMap(value);
         notifyObservers();
-        Log.d(TAG, "run: end Thread");
       }
     };
     setState(task);
@@ -80,10 +78,8 @@ public class NativeStore implements Observable {
   public void setState(final ReadableMap value) {
     final Runnable task = new Runnable() {
       public void run() {
-        Log.d(TAG, "run: start Thread");
         state = new HybridMap((ReadableNativeMap) value);
         notifyObservers();
-        Log.d(TAG, "run: end Thread");
       }
     };
     setState(task);
@@ -92,10 +88,8 @@ public class NativeStore implements Observable {
   public void setState(final WritableMap value) {
     final Runnable task = new Runnable() {
       public void run() {
-        Log.d(TAG, "run: start Thread");
         state = new HybridMap((WritableNativeMap) value);
         notifyObservers();
-        Log.d(TAG, "run: end Thread");
       }
     };
     setState(task);
