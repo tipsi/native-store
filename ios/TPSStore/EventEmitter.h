@@ -32,34 +32,40 @@ typedef void (^EventEmitterArrayCallback)(NSArray* data);
  Adds a listener to the end of the listeners array for the specified event.
  */
 - (void) on:(NSString*) event notify:(EventEmitterNotifyCallback) callback;
+- (void) on:(NSString*) event notify:(EventEmitterNotifyCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue;
 
 /**
  Adds a listener to the end of the listeners array for the specified event.
  */
 - (void) on:(NSString*) event callback:(EventEmitterDefaultCallback) callback;
+- (void) on:(NSString*) event callback:(EventEmitterDefaultCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue;
 
 /**
  Adds a listener to the end of the listeners array for the specified event.
  */
 - (void) on:(NSString*) event array:(EventEmitterArrayCallback) callback;
+- (void) on:(NSString*) event array:(EventEmitterArrayCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue;
 
 /**
  Adds a __one time__ listener for the event. This listener is invoked only
  the next time the event is fired, after which it is removed.
  */
 - (void) once:(NSString*) event notify:(EventEmitterNotifyCallback) callback;
+- (void) once:(NSString*) event notify:(EventEmitterNotifyCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue;
 
 /**
  Adds a __one time__ listener for the event. This listener is invoked only
  the next time the event is fired, after which it is removed.
  */
 - (void) once:(NSString*) event callback:(EventEmitterDefaultCallback) callback;
+- (void) once:(NSString*) event callback:(EventEmitterDefaultCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue;
 
 /**
  Adds a __one time__ listener for the event. This listener is invoked only
  the next time the event is fired, after which it is removed.
  */
 - (void) once:(NSString*) event array:(EventEmitterArrayCallback) callback;
+- (void) once:(NSString*) event array:(EventEmitterArrayCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue;
 
 /**
  Remove a callback from the listener array.

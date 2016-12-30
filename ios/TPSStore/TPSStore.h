@@ -14,6 +14,7 @@
 - (void)setState:(NSDictionary *)nextState;
 - (NSDictionary *)getState;
 - (void)subscribe:(EventEmitterDefaultCallback) callback;
+- (void)subscribe:(EventEmitterDefaultCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue;
 - (void)unsubscribe:(EventEmitterDefaultCallback) callback;
 
 + (id)sharedInstance;
