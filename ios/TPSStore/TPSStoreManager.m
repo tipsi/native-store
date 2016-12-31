@@ -16,6 +16,11 @@
 
 RCT_EXPORT_MODULE();
 
+- (dispatch_queue_t)methodQueue
+{
+    return dispatch_queue_create("com.tipsi.TPSStore.TPSStoreManagerQueue", DISPATCH_QUEUE_CONCURRENT);
+}
+
 - (id)init
 {
     self = [super init];
@@ -24,7 +29,7 @@ RCT_EXPORT_MODULE();
         // Subscribe on store updates
         [storage subscribe:^(NSDictionary* state) {
             [self sendEventWithName:@"state:change" body:state];
-        }];
+        } callbackQueue:[self methodQueue]];
     }
     return self;
 }

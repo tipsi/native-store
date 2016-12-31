@@ -82,4 +82,51 @@
     }];
 }
 
+- (void) testSubscriptionCallbackQueueWithoutSpecifyCallbackQueue
+{
+    NSDictionary *nextState = @{ @"test": @(1) };
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async Method Works!"];
+    
+    const char * callbackQueueLabel = dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL);
+    [store subscribe:^(NSDictionary *currentState) {
+        const char * sut = dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL);
+        XCTAssertEqual(sut, callbackQueueLabel, @"Callback queue label should be (%s) but is (%s)", callbackQueueLabel, sut);
+        
+        [expectation fulfill];
+    }];
+    
+    [store setState:nextState];
+    
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+    }];
+}
+
+- (void) testSubscriptionCallbackQueueWithCallbackQueue
+{
+    NSDictionary *nextState = @{ @"test": @(1) };
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Testing Async Method Works!"];
+    
+    dispatch_queue_t callbackQueue = dispatch_queue_create("com.tipsi.TPSStore.TPSStoreTestsCallbackQueue", DISPATCH_QUEUE_CONCURRENT);
+    const char * callbackQueueLabel = dispatch_queue_get_label(callbackQueue);
+    [store subscribe:^(NSDictionary *currentState) {
+        const char * sut = dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL);
+        XCTAssertEqual(sut, callbackQueueLabel, @"Callback queue label should be: (%s) but is: (%s)", callbackQueueLabel, sut);
+        
+        [expectation fulfill];
+    } callbackQueue:callbackQueue];
+    
+    [store setState:nextState];
+    
+    [self waitForExpectationsWithTimeout:5.0 handler:^(NSError *error) {
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+    }];
+}
+
 @end
