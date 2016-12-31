@@ -27,6 +27,13 @@
 @protocol EventEmitterListener <NSObject>
 @property BOOL once;
 @property id callback;
+
+#if OS_OBJECT_USE_OBJC
+@property (nonatomic, strong, nullable) dispatch_queue_t callbackQueue;
+#else
+@property (nonatomic, assign, nullable) dispatch_queue_t callbackQueue;
+#endif
+
 - (void) notify: (NSArray*) data;
 @end
 
@@ -44,9 +51,18 @@
 @implementation EventEmitterNotifyCallbackListener
 @synthesize once;
 @synthesize callback;
+@synthesize callbackQueue;
 
 - (void) notify: (NSArray*) data {
-    ((EventEmitterNotifyCallback) callback)();
+    void(^notifyBlock)() = ^{
+        ((EventEmitterNotifyCallback) callback)();
+    };
+    
+    if (callbackQueue) {
+        dispatch_async(callbackQueue, notifyBlock);
+    } else {
+        notifyBlock();
+    }
 }
 
 @end
@@ -54,14 +70,23 @@
 @implementation EventEmitterDefaultCallbackListener
 @synthesize once;
 @synthesize callback;
+@synthesize callbackQueue;
 
 - (void) notify: (NSArray*) data {
-    if (data.count == 0) {
-        ((EventEmitterDefaultCallback) callback)(nil);
-    } else if (data.count == 1) {
-        ((EventEmitterDefaultCallback) callback)(data[0]);
+    void(^notifyBlock)() = ^{
+        if (data.count == 0) {
+            ((EventEmitterDefaultCallback) callback)(nil);
+        } else if (data.count == 1) {
+            ((EventEmitterDefaultCallback) callback)(data[0]);
+        } else {
+            NSLog(@"Could not call block callback with array length > 1");
+        }
+    };
+    
+    if (callbackQueue) {
+        dispatch_async(callbackQueue, notifyBlock);
     } else {
-        NSLog(@"Could not call block callback with array length > 1");
+        notifyBlock();
     }
 }
 
@@ -70,9 +95,18 @@
 @implementation EventEmitterArrayCallbackListener
 @synthesize once;
 @synthesize callback;
+@synthesize callbackQueue;
 
 - (void) notify: (NSArray*) data {
-    ((EventEmitterArrayCallback) callback)(data);
+    void(^notifyBlock)() = ^{
+        ((EventEmitterArrayCallback) callback)(data);
+    };
+    
+    if (callbackQueue) {
+        dispatch_async(callbackQueue, notifyBlock);
+    } else {
+        notifyBlock();
+    }
 }
 
 @end
@@ -84,33 +118,57 @@ static const char* _EventEmitter_ListenerArray = "EventEmitter_ListenerArray";
 @implementation EventEmitter(EventEmitterListenerHandling)
 
 - (void) on:(NSString*) event notify:(EventEmitterNotifyCallback) callback {
-    [self addListener:[[EventEmitterNotifyCallbackListener alloc] init] callback:callback event:event once:NO];
+    [self on:event notify:callback callbackQueue:nil];
+}
+
+- (void) on:(NSString*) event notify:(EventEmitterNotifyCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue {
+    [self addListener:[[EventEmitterNotifyCallbackListener alloc] init] callback:callback callbackQueue:callbackQueue event:event once:NO];
 }
 
 - (void) on:(NSString*) event callback:(EventEmitterDefaultCallback) callback {
-    [self addListener:[[EventEmitterDefaultCallbackListener alloc] init] callback:callback event:event once:NO];
+    [self on:event callback:callback callbackQueue:nil];
+}
+
+- (void) on:(NSString*) event callback:(EventEmitterDefaultCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue {
+    [self addListener:[[EventEmitterDefaultCallbackListener alloc] init] callback:callback callbackQueue:callbackQueue event:event once:NO];
 }
 
 - (void) on:(NSString*) event array:(EventEmitterArrayCallback) callback {
-    [self addListener:[[EventEmitterArrayCallbackListener alloc] init] callback:callback event:event once:NO];
+    [self on:event array:callback callbackQueue:nil];
+}
+
+- (void) on:(NSString*) event array:(EventEmitterArrayCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue {
+    [self addListener:[[EventEmitterArrayCallbackListener alloc] init] callback:callback callbackQueue:callbackQueue event:event once:NO];
 }
 
 - (void) once:(NSString*) event notify:(EventEmitterNotifyCallback) callback {
-    [self addListener:[[EventEmitterNotifyCallbackListener alloc] init] callback:callback event:event once:YES];
+    [self once:event notify:callback callbackQueue:nil];
+}
+
+- (void) once:(NSString*) event notify:(EventEmitterNotifyCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue {
+    [self addListener:[[EventEmitterNotifyCallbackListener alloc] init] callback:callback callbackQueue:callbackQueue event:event once:YES];
 }
 
 - (void) once:(NSString*) event callback:(EventEmitterDefaultCallback) callback {
-    [self addListener:[[EventEmitterDefaultCallbackListener alloc] init] callback:callback event:event once:YES];
+    [self once:event callback:callback callbackQueue:nil];
+}
+
+- (void) once:(NSString*) event callback:(EventEmitterDefaultCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue {
+    [self addListener:[[EventEmitterDefaultCallbackListener alloc] init] callback:callback callbackQueue:callbackQueue event:event once:YES];
 }
 
 - (void) once:(NSString*) event array:(EventEmitterArrayCallback) callback {
-    [self addListener:[[EventEmitterArrayCallbackListener alloc] init] callback:callback event:event once:YES];
+    [self once:event array:callback callbackQueue:nil];
+}
+
+- (void) once:(NSString*) event array:(EventEmitterArrayCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue {
+    [self addListener:[[EventEmitterArrayCallbackListener alloc] init] callback:callback callbackQueue:callbackQueue event:event once:YES];
 }
 
 /*
  Internal helper function.
  */
-- (void) addListener:(NSObject<EventEmitterListener>*) listener callback:(id) callback event:(NSString*) event once:(BOOL) once {
+- (void) addListener:(NSObject<EventEmitterListener>*) listener callback:(id) callback callbackQueue:(dispatch_queue_t)callbackQueue event:(NSString*) event once:(BOOL) once {
     
     NSMutableDictionary* eventListeners = objc_getAssociatedObject(self, _EventEmitter_ListenerArray);
     
@@ -127,6 +185,7 @@ static const char* _EventEmitter_ListenerArray = "EventEmitter_ListenerArray";
     
     listener.once = once;
     listener.callback = callback;
+    listener.callbackQueue = callbackQueue;
     [eventListener addObject:listener];
 }
 

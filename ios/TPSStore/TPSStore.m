@@ -50,7 +50,12 @@
 
 - (void)subscribe:(EventEmitterDefaultCallback)callback
 {
-    [emitter on:@"state:change" callback:callback];
+    [self subscribe:callback callbackQueue:nil];
+}
+
+- (void)subscribe:(EventEmitterDefaultCallback) callback callbackQueue:(dispatch_queue_t) callbackQueue
+{
+    [emitter on:@"state:change" callback:callback callbackQueue:callbackQueue];
 }
 
 - (void)unsubscribe:(EventEmitterDefaultCallback) callback
