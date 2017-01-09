@@ -30,13 +30,11 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 @RunWith(JUnit4.class)
 @PrepareForTest({Arguments.class, WritableNativeMap.class, Log.class})
 public class NativeStoreUnitTest {
 
-  private final String TAG = getClass().getSimpleName();
   @Rule
   public final PowerMockRule rule = new PowerMockRule();
 
@@ -45,13 +43,11 @@ public class NativeStoreUnitTest {
   private static final String TEST_VALUE = "test_value";
   private NativeStore nativeStore;
 
-  private volatile boolean condition;
 
   //Without this lines I have the same problem:
   // http://stackoverflow.com/questions/35275772/unsatisfiedlinkerror-when-unit-testing-writablenativemap
   @Before
   public void setUp() {
-    System.out.println("Before");
     PowerMockito.mockStatic(Arguments.class);
     PowerMockito.when(Arguments.createArray()).thenAnswer(new Answer<Object>() {
       @Override
@@ -71,7 +67,6 @@ public class NativeStoreUnitTest {
 
   @After
   public void clearData() {
-    System.out.println("After");
     NativeStore.getInstance().close();
   }
 
@@ -83,36 +78,21 @@ public class NativeStoreUnitTest {
   @Test
   public void setStateTest() throws Exception {
     final int[] count = {0};
-//        final Map testMap = setValue(TEST_KEY, TEST_VALUE);
     final HashMap<String, Object> testMap = new HashMap<>();
     testMap.put(TEST_KEY, TEST_VALUE);
     nativeStore.setListener(new ThreadListener() {
       @Override
       public void endTask() {
         count[0]++;
+
         assertEquals("Object didn't added to store", nativeStore.getState().getNativeMap(), testMap);
-        condition = true;
-        System.out.println("setStateTest endTask "+count[0]);
       }
     });
     nativeStore.setState(testMap);
 
-    while (count[0] < 1){
-      System.out.println("setStateTest "+count[0]);
+    while (count[0] < 1) {
       Thread.yield();
-//            try {
-//                Thread.sleep(500);
-//                System.out.println("setStateTest without InterruptedException");
-//            } catch (InterruptedException e) {
-//                System.out.println("setStateTest InterruptedException");
-//            }
     }
-    condition = false;
-//    final Map testMap = setValue(TEST_KEY, TEST_VALUE);
-//    Thread.sleep(500);
-//    final Map mapFromStore = nativeStore.getState().getNativeMap();
-
-//    assertEquals("Object didn't added to store", mapFromStore, testMap);
   }
 
   @Test
@@ -123,33 +103,19 @@ public class NativeStoreUnitTest {
       @Override
       public void endTask() {
         count[0]++;
-        if(count[0] >= 3) {
+        if (count[0] >= 3) {
+
           assertTrue("Observer didn't send 3 events, or currentStateMap == null, or currentStateMap no instanceof WritableMap",
             observer.getEventCounter() == 3
               && observer.getCurrentStateMap() != null);
-          condition = true;
         }
       }
     });
     changeStoreStateThreeTimes();
 
-    while (count[0] < 3){
-      System.out.println("subscribeReactTest tttttttteeeeeessssstttt");
+    while (count[0] < 3) {
       Thread.yield();
-//            try {
-//                Thread.sleep(500);
-//                System.out.println("subscribeReactTest without InterruptedException");
-//            } catch (InterruptedException e) {
-//                System.out.println("subscribeReactTest InterruptedException");
-//            }
     }
-
-    condition = false;
-//    Thread.sleep(500);
-//
-//    assertTrue("Observer didn't send 3 events, or currentStateMap == null, or currentStateMap no instanceof WritableMap",
-//      observer.getEventCounter() == 3
-//        && observer.getCurrentStateMap() != null);
   }
 
   @Test
@@ -160,30 +126,18 @@ public class NativeStoreUnitTest {
       @Override
       public void endTask() {
         count[0]++;
-        if(count[0] >= 3) {
+        if (count[0] >= 3) {
+
           assertEquals("The observer was not unsubscribe", observer.getEventCounter(), 0);
-          condition = true;
         }
       }
     });
     unsubscribe(observer);
     changeStoreStateThreeTimes();
 
-    while (count[0] < 3){
-      System.out.println("unsubscribeReactTest tttttttteeeeeessssstttt");
+    while (count[0] < 3) {
       Thread.yield();
-//            try {
-//                Thread.sleep(500);
-//                System.out.println("unsubscribeReactTest without InterruptedException");
-//            } catch (InterruptedException e) {
-//                System.out.println("unsubscribeReactTest InterruptedException");
-//            }
     }
-    condition = false;
-
-//        Thread.sleep(500);
-//
-//        assertEquals("The observer was not unsubscribe", observer.getEventCounter(), 0);
   }
 
   @Test
@@ -194,38 +148,20 @@ public class NativeStoreUnitTest {
       @Override
       public void endTask() {
         count[0]++;
-        if(count[0] >= 3) {
-          System.out.println("subscribeNativeTest "+observer.getUpdateCounter());
-          System.out.println("subscribeNativeTest "+(observer.getCurrentStateMap() != null));
-          System.out.println("subscribeNativeTest "+(observer.getCurrentStateMap() instanceof Map));
+        if (count[0] >= 3) {
+
           assertTrue("Observer didn't receive 3 updates, or currentStateMap == null, or currentStateMap no instanceof Map",
             observer.getUpdateCounter() == 3
               && observer.getCurrentStateMap() != null
               && observer.getCurrentStateMap() instanceof Map);
-          condition = true;
         }
       }
     });
     changeStoreStateThreeTimes();
 
-    while (count[0] < 3){
-      System.out.println("subscribeNativeTest tttttttteeeeeessssstttt");
+    while (count[0] < 3) {
       Thread.yield();
-//            try {
-//                Thread.sleep(500);
-//                System.out.println("subscribeNativeTest without InterruptedException");
-//            } catch (InterruptedException e) {
-//                System.out.println("subscribeNativeTest InterruptedException");
-//            }
     }
-    condition = false;
-    Log.d(TAG, "subscribeNativeTest: end");
-//        Thread.sleep(500);
-//
-//        assertTrue("Observer didn't receive 3 updates, or currentStateMap == null, or currentStateMap no instanceof Map",
-//                observer.getUpdateCounter() == 3
-//                        && observer.getCurrentStateMap() != null
-//                        && observer.getCurrentStateMap() instanceof Map);
   }
 
   @Test
@@ -236,29 +172,16 @@ public class NativeStoreUnitTest {
       @Override
       public void endTask() {
         count[0]++;
+
         assertEquals("The observer was not unsubscribe", observer.getUpdateCounter(), 0);
-        condition = true;
       }
     });
     unsubscribe(observer);
     changeStoreStateThreeTimes();
 
-    while (count[0] < 3){
-      System.out.println("unsubscribeNativeTest tttttttteeeeeessssstttt");
+    while (count[0] < 3) {
       Thread.yield();
-//            try {
-////                Thread.yield();
-//                Thread.sleep(500);
-//                System.out.println("unsubscribeNativeTest without InterruptedException");
-//            } catch (InterruptedException e) {
-//                System.out.println("unsubscribeNativeTest InterruptedException");
-//            }
     }
-    condition = false;
-
-//        Thread.sleep(500);
-//
-//        assertEquals("The observer was not unsubscribe", observer.getUpdateCounter(), 0);
   }
 
   private Map<String, Object> setValue(final String key, final String value) {
