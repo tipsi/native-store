@@ -8,6 +8,7 @@ import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.bridge.WritableNativeMap;
 import com.gettipsi.nativestore.react.ReactObserver;
 import com.gettipsi.nativestore.util.HybridMap;
+import com.gettipsi.nativestore.util.ThreadListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +28,8 @@ public class NativeStore implements Observable {
   private static HybridMap state;
   private static List<Observer> observers;
   private static ThreadPoolExecutor poolExecutor;
+
+  private ThreadListener listener;
 
 
   public static NativeStore getInstance() {
@@ -62,6 +65,9 @@ public class NativeStore implements Observable {
   public void notifyObservers() {
     for (Observer observer : observers) {
       observer.update(state);
+    }
+    if(listener != null){
+      listener.endTask();
     }
   }
 
@@ -110,6 +116,10 @@ public class NativeStore implements Observable {
 
   public HybridMap getState() {
     return state;
+  }
+
+  public void setListener(final ThreadListener listener){
+    this.listener = listener;
   }
 
   public void close() {
