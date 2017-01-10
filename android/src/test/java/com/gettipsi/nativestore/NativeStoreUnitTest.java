@@ -26,6 +26,7 @@ import org.powermock.modules.junit4.rule.PowerMockRule;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -77,33 +78,31 @@ public class NativeStoreUnitTest {
 
   @Test
   public void setStateTest() throws Exception {
-    final int[] count = {0};
+    final AtomicInteger atomicInteger = new AtomicInteger(0);
     final HashMap<String, Object> testMap = new HashMap<>();
     testMap.put(TEST_KEY, TEST_VALUE);
     nativeStore.setListener(new ThreadListener() {
       @Override
       public void endTask() {
-        count[0]++;
+        atomicInteger.incrementAndGet();
 
         assertEquals("Object didn't added to store", nativeStore.getState().getNativeMap(), testMap);
       }
     });
     nativeStore.setState(testMap);
 
-    while (count[0] < 1) {
-      Thread.yield();
-    }
+    waitUntilTaskEnd(atomicInteger, 1);
   }
 
   @Test
   public void subscribeReactTest() throws Exception {
-    final int[] count = {0};
+    final AtomicInteger count = new AtomicInteger(0);
     final ReactObserverStub observer = subscribeReact(REACT_OBSERVER_NAME);
     nativeStore.setListener(new ThreadListener() {
       @Override
       public void endTask() {
-        count[0]++;
-        if (count[0] >= 3) {
+        count.incrementAndGet();
+        if (count.get() >= 3) {
 
           assertTrue("Observer didn't send 3 events, or currentStateMap == null, or currentStateMap no instanceof WritableMap",
             observer.getEventCounter() == 3
@@ -113,20 +112,18 @@ public class NativeStoreUnitTest {
     });
     changeStoreStateThreeTimes();
 
-    while (count[0] < 3) {
-      Thread.yield();
-    }
+    waitUntilTaskEnd(count, 3);
   }
 
   @Test
   public void unsubscribeReactTest() throws Exception {
-    final int[] count = {0};
+    final AtomicInteger count = new AtomicInteger(0);
     final ReactObserverStub observer = subscribeReact(REACT_OBSERVER_NAME);
     nativeStore.setListener(new ThreadListener() {
       @Override
       public void endTask() {
-        count[0]++;
-        if (count[0] >= 3) {
+        count.incrementAndGet();
+        if (count.get() >= 3) {
 
           assertEquals("The observer was not unsubscribe", observer.getEventCounter(), 0);
         }
@@ -135,20 +132,18 @@ public class NativeStoreUnitTest {
     unsubscribe(observer);
     changeStoreStateThreeTimes();
 
-    while (count[0] < 3) {
-      Thread.yield();
-    }
+    waitUntilTaskEnd(count, 3);
   }
 
   @Test
   public void subscribeNativeTest() throws Exception {
-    final int[] count = {0};
+    final AtomicInteger count = new AtomicInteger(0);
     final NativeObserverStub observer = subscribeNative();
     nativeStore.setListener(new ThreadListener() {
       @Override
       public void endTask() {
-        count[0]++;
-        if (count[0] >= 3) {
+        count.incrementAndGet();
+        if (count.get() >= 3) {
 
           assertTrue("Observer didn't receive 3 updates, or currentStateMap == null, or currentStateMap no instanceof Map",
             observer.getUpdateCounter() == 3
@@ -159,19 +154,17 @@ public class NativeStoreUnitTest {
     });
     changeStoreStateThreeTimes();
 
-    while (count[0] < 3) {
-      Thread.yield();
-    }
+    waitUntilTaskEnd(count, 3);
   }
 
   @Test
   public void unsubscribeNativeTest() throws Exception {
-    final int[] count = {0};
+    final AtomicInteger count = new AtomicInteger(0);
     final NativeObserverStub observer = subscribeNative();
     nativeStore.setListener(new ThreadListener() {
       @Override
       public void endTask() {
-        count[0]++;
+        count.incrementAndGet();
 
         assertEquals("The observer was not unsubscribe", observer.getUpdateCounter(), 0);
       }
@@ -179,9 +172,7 @@ public class NativeStoreUnitTest {
     unsubscribe(observer);
     changeStoreStateThreeTimes();
 
-    while (count[0] < 3) {
-      Thread.yield();
-    }
+    waitUntilTaskEnd(count, 3);
   }
 
   private Map<String, Object> setValue(final String key, final String value) {
@@ -211,6 +202,12 @@ public class NativeStoreUnitTest {
   private void changeStoreStateThreeTimes() {
     for (int i = 0; i < 3; i++) {
       setValue(TEST_KEY + i, TEST_VALUE + i);
+    }
+  }
+
+  private void waitUntilTaskEnd(final AtomicInteger count, final int conditionCount){
+    while (count.get() < conditionCount) {
+      Thread.yield();
     }
   }
 }
