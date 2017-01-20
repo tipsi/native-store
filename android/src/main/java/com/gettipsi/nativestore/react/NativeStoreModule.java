@@ -33,7 +33,7 @@ public class NativeStoreModule extends ReactContextBaseJavaModule implements Lif
 
     @ReactMethod
     public void setState(final ReadableMap value) {
-        Log.d(TAG, "setState: " + value.getClass());
+        Log.d(TAG, "setState: ");
         subscribeReactObserver();
         NativeStore.getInstance().setState(value);
     }

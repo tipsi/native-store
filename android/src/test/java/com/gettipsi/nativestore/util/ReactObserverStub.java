@@ -2,7 +2,6 @@ package com.gettipsi.nativestore.util;
 
 import android.support.annotation.Nullable;
 
-import com.facebook.react.bridge.WritableMap;
 import com.gettipsi.nativestore.store.Observer;
 
 import java.util.Map;
@@ -13,30 +12,30 @@ import java.util.Map;
 
 public class ReactObserverStub implements Observer {
 
-    private final String JSObserverName;
-    private WritableMap currentStateMap;
-    private int eventCounter;
+  private final String JSObserverName;
+  private Map currentStateMap;
+  private int eventCounter;
 
-    public ReactObserverStub(final String JSObserverName){
-        this.JSObserverName = JSObserverName;
-    }
+  public ReactObserverStub(final String JSObserverName){
+    this.JSObserverName = JSObserverName;
+  }
 
 
-    @Override
-    public void update(HybridMap storeState) {
-        sendEvent(JSObserverName, storeState.getWritableMap());
-    }
+  @Override
+  public void update(HybridMap storeState) {
+    sendEvent(JSObserverName, storeState.getNativeMap());
+  }
 
-    private void sendEvent(String eventName, @Nullable WritableMap params) {
-        eventCounter++;
-        currentStateMap = params;
-    }
+  private void sendEvent(String eventName, @Nullable Map params) {
+    eventCounter++;
+    currentStateMap = params;
+  }
 
-    public int getEventCounter(){
-        return eventCounter;
-    }
+  public int getEventCounter(){
+    return eventCounter;
+  }
 
-    public WritableMap getCurrentStateMap(){
-        return currentStateMap;
-    }
+  public Map getCurrentStateMap(){
+    return currentStateMap;
+  }
 }
