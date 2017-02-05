@@ -7,7 +7,7 @@
 //
 
 #import "Dummy.h"
-#import "TPSStore.h"
+#import <TPSStore/TPSStore.h>
 
 @implementation Dummy
 {

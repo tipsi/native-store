@@ -12,6 +12,7 @@ case "${TRAVIS_OS_NAME}" in
   ;;
   linux)
     npm install
+    npm install react-native
     cd example_tmp
     npm install
     react-native unlink $library_name

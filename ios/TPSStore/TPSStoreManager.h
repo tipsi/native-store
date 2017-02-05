@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RCTBridgeModule.h"
-#import "RCTEventEmitter.h"
-#import "RCTEventDispatcher.h"
+#import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
+#import <React/RCTEventDispatcher.h>
 
 @interface TPSStoreManager : RCTEventEmitter <RCTBridgeModule>
 

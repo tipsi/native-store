@@ -8,22 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		3AD180CE1DF43BED0093B005 /* TPSStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180CD1DF43BED0093B005 /* TPSStore.m */; };
-		3AD180CF1DF43BED0093B005 /* TPSStore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3AD180CC1DF43BED0093B005 /* TPSStore.h */; };
 		3AD180D71DF43C350093B005 /* EventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180D61DF43C350093B005 /* EventEmitter.m */; };
 		3AD180DA1DF43C6C0093B005 /* TPSStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180D91DF43C6C0093B005 /* TPSStoreManager.m */; };
 		3AD180E21DF43F020093B005 /* TPSStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180E11DF43F020093B005 /* TPSStoreTests.m */; };
-		3AD180E41DF43F020093B005 /* libTPSStore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD180C91DF43BED0093B005 /* libTPSStore.a */; };
+		3C73EBC21E44AC6600AD4482 /* TPSStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180CD1DF43BED0093B005 /* TPSStore.m */; };
+		3C73EBC31E44AC6900AD4482 /* EventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180D61DF43C350093B005 /* EventEmitter.m */; };
+		3CE162E81E40DD6900FA8C93 /* TPSStore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3AD180CC1DF43BED0093B005 /* TPSStore.h */; };
+		3CE162E91E40DD6900FA8C93 /* EventEmitter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3AD180D51DF43C350093B005 /* EventEmitter.h */; };
+		3CE162EA1E40DD6900FA8C93 /* TPSStoreManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3AD180D81DF43C6C0093B005 /* TPSStoreManager.h */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		3AD180E51DF43F020093B005 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3AD180C11DF43BED0093B005 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3AD180C81DF43BED0093B005;
-			remoteInfo = TPSStore;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3AD180C71DF43BED0093B005 /* CopyFiles */ = {
@@ -32,7 +25,9 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				3AD180CF1DF43BED0093B005 /* TPSStore.h in CopyFiles */,
+				3CE162E81E40DD6900FA8C93 /* TPSStore.h in CopyFiles */,
+				3CE162E91E40DD6900FA8C93 /* EventEmitter.h in CopyFiles */,
+				3CE162EA1E40DD6900FA8C93 /* TPSStoreManager.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,6 +44,8 @@
 		3AD180DF1DF43F020093B005 /* TPSStoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TPSStoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AD180E11DF43F020093B005 /* TPSStoreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPSStoreTests.m; sourceTree = "<group>"; };
 		3AD180E31DF43F020093B005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3CFE98551E43A5AD00DC9246 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		3CFE98571E43A5B300DC9246 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AD180E41DF43F020093B005 /* libTPSStore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,9 +69,11 @@
 		3AD180C01DF43BED0093B005 = {
 			isa = PBXGroup;
 			children = (
+				3CE162181E4090A900FA8C93 /* Libraries */,
 				3AD180CB1DF43BED0093B005 /* TPSStore */,
 				3AD180E01DF43F020093B005 /* TPSStoreTests */,
 				3AD180CA1DF43BED0093B005 /* Products */,
+				3CFE98541E43A5AD00DC9246 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +108,22 @@
 			path = TPSStoreTests;
 			sourceTree = "<group>";
 		};
+		3CE162181E4090A900FA8C93 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
+		3CFE98541E43A5AD00DC9246 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3CFE98571E43A5B300DC9246 /* Foundation.framework */,
+				3CFE98551E43A5AD00DC9246 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,7 +155,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3AD180E61DF43F020093B005 /* PBXTargetDependency */,
 			);
 			name = TPSStoreTests;
 			productName = TPSStoreTests;
@@ -210,19 +223,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C73EBC31E44AC6900AD4482 /* EventEmitter.m in Sources */,
 				3AD180E21DF43F020093B005 /* TPSStoreTests.m in Sources */,
+				3C73EBC21E44AC6600AD4482 /* TPSStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3AD180E61DF43F020093B005 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3AD180C81DF43BED0093B005 /* TPSStore */;
-			targetProxy = 3AD180E51DF43F020093B005 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3AD180D01DF43BED0093B005 /* Debug */ = {
@@ -346,6 +353,12 @@
 		3AD180E71DF43F020093B005 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+					"${SRCROOT}/../../../ios/Pods/Headers/Public/**",
+					"$(SRCROOT)/../node_modules/react-native/**",
+				);
 				INFOPLIST_FILE = TPSStoreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tipsi.TPSStoreTests;
@@ -356,6 +369,12 @@
 		3AD180E81DF43F020093B005 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+					"${SRCROOT}/../../../ios/Pods/Headers/Public/**",
+					"$(SRCROOT)/../node_modules/react-native/**",
+				);
 				INFOPLIST_FILE = TPSStoreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tipsi.TPSStoreTests;
