@@ -12,18 +12,10 @@
 		3AD180D71DF43C350093B005 /* EventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180D61DF43C350093B005 /* EventEmitter.m */; };
 		3AD180DA1DF43C6C0093B005 /* TPSStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180D91DF43C6C0093B005 /* TPSStoreManager.m */; };
 		3AD180E21DF43F020093B005 /* TPSStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180E11DF43F020093B005 /* TPSStoreTests.m */; };
-		3AD180E41DF43F020093B005 /* libTPSStore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD180C91DF43BED0093B005 /* libTPSStore.a */; };
+		3C60BF831E5A1615008DE3D0 /* EventEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180D61DF43C350093B005 /* EventEmitter.m */; };
+		3C60BF841E5A1640008DE3D0 /* TPSStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AD180CD1DF43BED0093B005 /* TPSStore.m */; };
+		3CC3649D1E5E10FC0090C8C7 /* EventEmitter.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3AD180D51DF43C350093B005 /* EventEmitter.h */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		3AD180E51DF43F020093B005 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3AD180C11DF43BED0093B005 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3AD180C81DF43BED0093B005;
-			remoteInfo = TPSStore;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		3AD180C71DF43BED0093B005 /* CopyFiles */ = {
@@ -32,6 +24,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				3CC3649D1E5E10FC0090C8C7 /* EventEmitter.h in CopyFiles */,
 				3AD180CF1DF43BED0093B005 /* TPSStore.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AD180E41DF43F020093B005 /* libTPSStore.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,7 +133,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3AD180E61DF43F020093B005 /* PBXTargetDependency */,
 			);
 			name = TPSStoreTests;
 			productName = TPSStoreTests;
@@ -210,19 +201,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C60BF841E5A1640008DE3D0 /* TPSStore.m in Sources */,
+				3C60BF831E5A1615008DE3D0 /* EventEmitter.m in Sources */,
 				3AD180E21DF43F020093B005 /* TPSStoreTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3AD180E61DF43F020093B005 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3AD180C81DF43BED0093B005 /* TPSStore */;
-			targetProxy = 3AD180E51DF43F020093B005 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3AD180D01DF43BED0093B005 /* Debug */ = {
